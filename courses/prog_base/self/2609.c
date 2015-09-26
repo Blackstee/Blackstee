@@ -5,7 +5,7 @@
 int main(){
 int h,m,code;
 float f;
-printf("vvedit kod, godiny i hv");
+printf("vvedit kod, godiny i hv\n");
 scanf ("%d %d %d", &code, &h, &m);
 switch (code)
 {
