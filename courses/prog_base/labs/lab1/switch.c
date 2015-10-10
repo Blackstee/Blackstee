@@ -1,12 +1,16 @@
+
 #include <math.h>
+
+
 int exec(int op, int a, int b) {
    int result;
    int t;
    if (op < 0)
-    {a = t;
+    {t = a;
      a = b;
-     b = t;}
-   switch(abs(op))
+     b = t;
+     op = -op; }
+   switch(op)
    {
    case 0: result = -a;
    break;
