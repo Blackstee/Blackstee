@@ -1,6 +1,18 @@
-
+#include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 
+int exec(int, int, int);
+
+int main() {
+    int opval = -2, aval = 3, bval = 5;
+    int resultVal;
+
+    resultVal = exec(opval, aval, bval);
+
+    printf("%i", resultVal);
+    return 0;
+}
 
 int exec(int op, int a, int b) {
    int result;

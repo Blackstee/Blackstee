@@ -1,19 +1,32 @@
-
+#include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
+int satisfies(int, int, int);
+
+int main() {
+    int aval = 0, bval = 0, cval = 0;
+    int resultVal;
+
+    resultVal = satisfies(aval, bval, cval);
+
+    printf("%i", resultVal);
+    return 0;
+}
+
 int satisfies(int a, int b, int c) {
    int result, modmin, sum2, min, max;
    if (a<0 && b<0 && c<0)
-   {if (a<b && a<c)
+   {if (a<=b && a<=c)
    {modmin=abs(a);
    sum2=b+c;}
       else {
-            if (b<c && b<a)
+            if (b<=c && b<=a)
             {modmin=abs(b);
             sum2=a+c;}
                 else
                     {modmin=abs(c);
                     sum2=a+b;}}
-    if (sum2<-256 && (modmin==1 || modmin==2 || modmin==4 || modmin==8 || modmin==16 || modmin==32 || modmin==64 || modmin==128))
+    if (sum2<-256 && (int)(log2(modmin))%1==0 && modmin<256)
     result=1;
     else
         if ((abs(sum2)-modmin)<16 || abs(sum2)<16)
