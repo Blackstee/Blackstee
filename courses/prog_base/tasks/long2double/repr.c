@@ -1,4 +1,3 @@
-
 double long2double(long long);
 int main(){
 long long a = 0;
