@@ -35,13 +35,13 @@ double long2double(long long a)
     //znahodjennya mantissi u normalizovanomu viglyadi
     Mnorm = M + 1.0;
 
-    if ((E == 2047) &&  (M!=0.0)) return printf ("R = NaN");
-    if ((E == 2047) && (M == 0.0) && (L == 1) )return printf ("R = -Infinity");
-    if ((E == 2047) && (M == 0.0) && (L == 0))return printf ("R = Infinity");
+    if ((E == 2047) &&  (M!=0.0)) return NAN;
+    if ((E == 2047) && (M == 0.0) && (L == 1))return -INFINITY;
+    if ((E == 2047) && (M == 0.0) && (L == 0))return INFINITY;
     //Normalizovane
     if ((E > 0) && (E <2047)) {R = (pow((double)-1,L)* pow((double) 2, (double) (E-1023))*Mnorm); return (double) R;}
     //Denormalizovane
     if ((E == 0) && (M != 0)) {R = (pow((double)-1, L)* pow((double) 2, -1022)*M); return (double) R;}
-    if ((E == 0) && (M == 0.0) && (L == 1))return printf("R = -0");
-    if ((E == 0) && (M == 0.0) && (L == 0)) return printf ("R = 0");
+    if ((E == 0) && (M == 0.0) && (L == 1))return -0.0;
+    if ((E == 0) && (M == 0.0) && (L == 0)) return 0.0;
 }
