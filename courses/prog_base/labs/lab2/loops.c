@@ -1,3 +1,4 @@
+#include<math.h>
 
 double calc (int n, int m)
 {
