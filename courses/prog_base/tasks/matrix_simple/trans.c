@@ -25,6 +25,11 @@ void rotateCCW90(int mat[4][4])
         for (j = 0; j < 4; j++)
             rot[i][j] = mat[j][3-i];
     }
+    for (i = 0; i < 4; i++)
+    {
+        for (j = 0; j < 4; j++)
+            mat[i][j] = rot[i][j];
+    }
 }
 
 
@@ -38,6 +43,11 @@ void flipV(int mat[4][4])
         for (j = 0; j < 4; j++)
             flipV[i][j] = mat[3-i][j];
     }
+    for (i = 0; i < 4; i++)
+    {
+        for (j = 0; j < 4; j++)
+            mat[i][j] = flipV[i][j];
+    }
 }
 
 
@@ -50,5 +60,10 @@ void transposSide(int mat[4][4])
     {
     for (j = 0; j < 4; j++)
             transside[i][j] = mat[3-j][3-i];
+    }
+    for (i = 0; i < 4; i++)
+    {
+        for (j = 0; j < 4; j++)
+            mat[i][j] = transside[i][j];
     }
 }
