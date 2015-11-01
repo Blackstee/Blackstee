@@ -1,8 +1,0 @@
-# depslib dependency file v1.0
-1446403057 source:d:\repositories blackstee\blackstee\courses\prog_base\tasks\string_simple\string_simple\proc.c
-	<string.h>
-
-1446399197 source:d:\repositories blackstee\blackstee\courses\prog_base\tasks\string_simple\string_simple\main.c
-	<stdlib.h>
-	<stdio.h>
-
