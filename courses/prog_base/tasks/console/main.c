@@ -25,10 +25,11 @@ COORD Left (COORD pos, int border)
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     while (1)
     {
+        int curColPos;
         if (pos.X == border)
             break;
         SetConsoleCursorPosition(hConsole, pos);
-        int curColPos = abs((pos.X - pos.Y) % 3);
+        curColPos = abs((pos.X - pos.Y) % 3);
         if(pos.Y > pos.X)
             curColPos = 2 - abs((pos.X - pos.Y - 2) % 3);
         ConsoleColor(curColPos);
@@ -43,10 +44,11 @@ COORD Up (COORD pos, int border)
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     while (1)
     {
+        int curColPos;
         if (pos.Y == border)
             break;
         SetConsoleCursorPosition(hConsole, pos);
-        int curColPos = abs((pos.X - pos.Y) % 3);
+        curColPos = abs((pos.X - pos.Y) % 3);
         if(pos.Y > pos.X)
             curColPos = 2 - abs((pos.X - pos.Y - 2) % 3);
         ConsoleColor(curColPos);
@@ -62,10 +64,11 @@ COORD Right (COORD pos, int border)
      HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     while (1)
     {
+        int curColPos;
         if (pos.X == border)
             break;
         SetConsoleCursorPosition(hConsole, pos);
-        int curColPos = abs((pos.X - pos.Y) % 3);
+        curColPos = abs((pos.X - pos.Y) % 3);
         if(pos.Y > pos.X)
             curColPos = 2 - abs((pos.X - pos.Y - 2) % 3);
         ConsoleColor(curColPos);
@@ -80,10 +83,11 @@ COORD Down (COORD pos, int border)
      HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     while (1)
     {
+        int curColPos;
         if (pos.Y == border)
             break;
         SetConsoleCursorPosition(hConsole, pos);
-        int curColPos = abs((pos.X - pos.Y) % 3);
+        curColPos = abs((pos.X - pos.Y) % 3);
         if(pos.Y > pos.X)
             curColPos = 2 - abs((pos.X - pos.Y - 2) % 3);
         ConsoleColor(curColPos);
