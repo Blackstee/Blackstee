@@ -14,12 +14,7 @@ void ConsoleColor(int curColPos)
         color = BACKGROUND_RED | BACKGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_INTENSITY;
     SetConsoleTextAttribute(hConsole, color);
 }
-void Position(int x, int y)
-{
-    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    COORD pos = {x, y};
-    SetConsoleCursorPosition(hConsole, pos);
-}
+
 COORD Left (COORD pos, int border)
 {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
