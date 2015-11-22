@@ -51,7 +51,7 @@ int main (void)
             PosColor (curX, curY, blue_text);
             printf ("+");
         }
-        for (curX = -79; curX < 80; curX += 0.01)
+        for (curX = -40; curX < 40; curX += 0.01)
         {
             curY = - 0.5 * tan(curX / koef + 2) * koef;
             curX += xCPos;
