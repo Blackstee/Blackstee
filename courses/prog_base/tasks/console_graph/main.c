@@ -9,6 +9,7 @@ void PosColor(int x, int y, int color)
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
     SetConsoleTextAttribute(hConsole, color);
     SetConsoleCursorPosition(hConsole, coord);
+    int white = BACKGROUND_GREEN | BACKGROUND_RED | BACKGROUND_BLUE | BACKGROUND_INTENSITY;
 }
 int main (void)
 {

@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1447595687 source:d:\repositories blackstee\blackstee\courses\prog_base\tasks\console\main.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+
