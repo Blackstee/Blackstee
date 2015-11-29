@@ -9,8 +9,8 @@ void fprocess(const char * pread, const char * pwrite)
     char str [5], str1[100];
     FILE * fp1;
     FILE * fp2;
-    fp1 = fopen("pread.txt", "r");
-    fp2 = fopen("pwrite.txt", "w");
+    fp1 = fopen(pread, "r");
+    fp2 = fopen(pwrite, "w");
     if (fp1 == NULL) {
         puts("Error!");
         return EXIT_FAILURE;
