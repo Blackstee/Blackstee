@@ -7,8 +7,8 @@ int *morse_decode(char *message, const char *signal){
     result [0] = 0;
     int i, h, unit = 100, count = 0;
     for (i = 0; i < strlen(signal)+ 1; i++){
-       if (signal[i] == '1' ) count++;
-       if (signal[i] == '0'|| signal[i] == '\0'){
+       if (signal[i] == '0' ) count++;
+       if (signal[i] == '1'|| signal[i] == '\0'){
             if (count < unit && count > 0)
             unit = count;
             count = 0;
