@@ -12,7 +12,7 @@ int main(void)
     int wow_text = FOREGROUND_RED | FOREGROUND_BLUE | FOREGROUND_INTENSITY;
     int green = FOREGROUND_GREEN | BACKGROUND_BLUE | BACKGROUND_GREEN |BACKGROUND_RED | BACKGROUND_INTENSITY;
     int white =  BACKGROUND_BLUE | BACKGROUND_GREEN |BACKGROUND_RED | BACKGROUND_INTENSITY;
-    int i = 50, j = 75, speed = 1, point = 0, n = 1, number = 0, move, l, k, x, y;
+    int i = 50, j = 75, speed = 1, point = 0, n = 1, number = 0, move, l, k, x, y, pause;
     int matrix[100][150];
     PosColor(3, 2, green);
     printf("Please, set the size of your console 120X150 and press any key");
