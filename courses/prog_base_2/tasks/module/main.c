@@ -24,6 +24,9 @@ int main(void) {
     array_print(array2);
     array_print(array3);
     array_print(array4);
+    array_free (array1);
     array_free (array2);
+    array_free (array3);
+    array_free (array4);
     return 0;
 }
