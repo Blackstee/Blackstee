@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1457819416 source:d:\ОП\unit tests\Новая папка\unit-tests\array.c
+	"array.h"
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+
+1457621332 d:\ОП\unit tests\Новая папка\unit-tests\array.h
+
