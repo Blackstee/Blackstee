@@ -1,0 +1,117 @@
+# depslib dependency file v1.0
+1459096688 source:d:\ÎÏ\äç\threads\threads\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<windows.h>
+	"thread.h"
+	"mutex.h"
+	"SymbolSetter.h"
+	"DigitReader.h"
+
+1459078975 d:\ÎÏ\äç\threads\threads\thread.h
+
+1459078997 d:\ÎÏ\äç\threads\threads\mutex.h
+
+1459091739 source:d:\ÎÏ\äç\threads\threads\mutex.c
+	<windows.h>
+	"mutex.h"
+
+1459091739 source:d:\ÎÏ\äç\threads\threads\thread.c
+	<windows.h>
+	"thread.h"
+
+1459098585 source:d:\ÎÏ\äç\threads\threads\digitreader.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<ctype.h>
+	<string.h>
+	<windows.h>
+	"thread.h"
+	"mutex.h"
+	"SymbolSetter.h"
+	"DigitReader.h"
+
+1459098139 d:\ÎÏ\äç\threads\threads\symbolsetter.h
+	"thread.h"
+	"mutex.h"
+	"SymbolSetter.h"
+	"DigitReader.h"
+
+1459098585 d:\ÎÏ\äç\threads\threads\digitreader.h
+	"thread.h"
+	"mutex.h"
+	"SymbolSetter.h"
+	"DigitReader.h"
+
+1459098585 source:d:\ÎÏ\äç\threads\threads\symbolsetter.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<windows.h>
+	"thread.h"
+	"mutex.h"
+	"SymbolSetter.h"
+	"DigitReader.h"
+
+1459098963 source:d:\repositories blackstee\blackstee\courses\prog_base_2\tasks\threads\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<string.h>
+	<windows.h>
+	"thread.h"
+	"mutex.h"
+	"SymbolSetter.h"
+	"DigitReader.h"
+
+1459078975 d:\repositories blackstee\blackstee\courses\prog_base_2\tasks\threads\thread.h
+
+1459078997 d:\repositories blackstee\blackstee\courses\prog_base_2\tasks\threads\mutex.h
+
+1459098139 d:\repositories blackstee\blackstee\courses\prog_base_2\tasks\threads\symbolsetter.h
+	"thread.h"
+	"mutex.h"
+	"SymbolSetter.h"
+	"DigitReader.h"
+
+1459098585 d:\repositories blackstee\blackstee\courses\prog_base_2\tasks\threads\digitreader.h
+	"thread.h"
+	"mutex.h"
+	"SymbolSetter.h"
+	"DigitReader.h"
+
+1459091739 source:d:\repositories blackstee\blackstee\courses\prog_base_2\tasks\threads\mutex.c
+	<windows.h>
+	"mutex.h"
+
+1459099360 source:d:\repositories blackstee\blackstee\courses\prog_base_2\tasks\threads\symbolsetter.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<windows.h>
+	"thread.h"
+	"mutex.h"
+	"SymbolSetter.h"
+	"DigitReader.h"
+
+1459091739 source:d:\repositories blackstee\blackstee\courses\prog_base_2\tasks\threads\thread.c
+	<windows.h>
+	"thread.h"
+
+1459099370 source:d:\repositories blackstee\blackstee\courses\prog_base_2\tasks\threads\digitreader.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<ctype.h>
+	<string.h>
+	<windows.h>
+	"thread.h"
+	"mutex.h"
+	"SymbolSetter.h"
+	"DigitReader.h"
+
