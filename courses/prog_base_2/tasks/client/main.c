@@ -70,11 +70,8 @@ void send_request3(SOCKET recvSocket, const char* host_name, char * word){
 	char imp [50];
 	printf("The max-length word is: %s\n", word);
 	sprintf(imp, "result=%s", word);
-	sprintf(request, "POST /var/4 HTTP/1.0\r\n"
-		"Host: %s\r\n"
-		"Content-length: %d\r\n\r\n"
-		"%s\r\n", host_name, strlen(imp), imp);
-	send(recvSocket, request, strlen(request) + 1, 0);
+	sprintf(request, "POST %s/var/4 HTTP/1.1\r\nContent-length: %d\r\n\r\n%s", host_name, strlen(imp), imp);
+    send(recvSocket, request, strlen(request), 0);
 }
 
 SOCKADDR_IN get_Addr(char * ip)
@@ -88,7 +85,8 @@ SOCKADDR_IN get_Addr(char * ip)
 }
 
 
-char * Max_word(char *message){
+char * Max_word(char mes [100]){
+   char * message = strstr (mes,"\r\n\r\n");
     int i;
     char max_word [300];
     max_word [0] = 0;
@@ -166,7 +164,6 @@ int main(int argc , char *argv[])
 
     //Receiving the answer
     rec_answer (recvSocket, buffer);
-
     //Function
     strcpy(string, Max_word (buffer));
 
