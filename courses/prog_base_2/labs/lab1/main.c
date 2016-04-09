@@ -6,12 +6,13 @@
 #include <cmocka.h>
 
 #include "server.h"
+#include "client.h"
 
 
 // unit-test functions
 
 //right input
-static void new_void_status (void **state)
+static void new_value_status (void **state)
 {
     server_t *serv1  = server_new (23456);
     assert_int_equal(server_t_get_status(serv1), 0);
@@ -25,7 +26,7 @@ static void new_oneServer_status (void **state)
     server_t_free (serv1);
 }
 //checking number of clients - Empty
-static void new_void_zeroCount(void **state)
+static void new_value_zeroCount(void **state)
 {
     server_t * serv1 = server_new(567432);
     assert_int_equal(server_t_get_count_of_clients(serv1), 0);
@@ -52,7 +53,7 @@ static void add_twoClients_countTwo(void **state)
     server_t_free(serv1);
 }
 //checking number of clients  - Two Clients - free One Client = One Client
-static void free_hasaddedtwoClients_countOne (void ** state)
+static void free_twoClients_countOne (void ** state)
 {
     server_t * serv1 = server_new(567432);
     client_t * cl1 = client_new(serv1, 867);
@@ -88,7 +89,7 @@ static void name_oneClient_error (void **state)
     server_t_free(serv1);
 }
 //unoriginal name (the same name of client)
-static void name_twoClients_sameid (void **state)
+static void name_twoClients_statussameid (void **state)
 {
     server_t * serv1 = server_new (66786);
     client_t * cl1 = client_new (serv1, 232);
@@ -99,7 +100,7 @@ static void name_twoClients_sameid (void **state)
     server_t_free(serv1);
 }
 //sending message (check status)
-static void sendmess_twoClients_status (void **state)
+static void sendmess_twoClientsandMessage_statusserver (void **state)
 {
     server_t * serv1 = server_new(567432);
     client_t * cl1 = client_new(serv1, 867);
@@ -111,7 +112,7 @@ static void sendmess_twoClients_status (void **state)
     server_t_free(serv1);
 }
 //sending message (wrong sender)
-static void sendmess_wrongSender_status (void **state)
+static void sendmess_wrongSenderRecipientandMessage_status (void **state)
 {
     server_t * serv1 = server_new(567432);
     client_t * cl1 = client_new(serv1, 867);
@@ -125,7 +126,7 @@ static void sendmess_wrongSender_status (void **state)
     server_t_free(serv1);
 }
 //sending message (wrong recipient)
-static void sendmess_wrongRecipient_status (void **state)
+static void sendmess_wrongRecipientSenderandMessage_status (void **state)
 {
     server_t * serv1 = server_new(567432);
     client_t * cl1 = client_new(serv1, 867);
@@ -139,7 +140,7 @@ static void sendmess_wrongRecipient_status (void **state)
     server_t_free(serv1);
 }
 //sending message (wrong message)
-static void sendmess_wrongMes_status (void **state)
+static void sendmess_wrongMessageTwoClients_status (void **state)
 {
     server_t * serv1 = server_new(567432);
     client_t * cl1 = client_new(serv1, 867);
@@ -151,7 +152,7 @@ static void sendmess_wrongMes_status (void **state)
     server_t_free(serv1);
 }
 //sending message (status)
-static void sendmess_oneClient_status (void ** state)
+static void sendmess_TwoClients_statusclient (void ** state)
 {
     server_t * serv1 = server_new(567432);
     client_t * cl1 = client_new(serv1, 867);
@@ -179,21 +180,21 @@ int main()
 {
     const struct CMUnitTest tests[] =
     {
-        cmocka_unit_test(new_void_status),
-        cmocka_unit_test(new_void_zeroCount),
+        cmocka_unit_test(new_value_status),
+        cmocka_unit_test(new_value_zeroCount),
         cmocka_unit_test(add_oneClient_countOne),
         cmocka_unit_test(add_twoClients_countTwo),
-        cmocka_unit_test(free_hasaddedtwoClients_countOne),
+        cmocka_unit_test(free_twoClients_countOne),
         cmocka_unit_test(name_oneServer_id),
         cmocka_unit_test(new_oneServer_status),
         cmocka_unit_test(name_oneClient_id),
         cmocka_unit_test(name_oneClient_error),
-        cmocka_unit_test(name_twoClients_sameid),
-        cmocka_unit_test(sendmess_twoClients_status),
-        cmocka_unit_test(sendmess_wrongSender_status),
-        cmocka_unit_test(sendmess_wrongRecipient_status),
-        cmocka_unit_test(sendmess_wrongMes_status),
-        cmocka_unit_test(sendmess_oneClient_status),
+        cmocka_unit_test(name_twoClients_statussameid),
+        cmocka_unit_test(sendmess_twoClientsandMessage_statusserver),
+        cmocka_unit_test(sendmess_wrongSenderRecipientandMessage_status),
+        cmocka_unit_test(sendmess_wrongRecipientSenderandMessage_status),
+        cmocka_unit_test(sendmess_wrongMessageTwoClients_status),
+        cmocka_unit_test(sendmess_TwoClients_statusclient),
         cmocka_unit_test(printmess_oneClient_status),
     };
     return cmocka_run_group_tests(tests, NULL, NULL);

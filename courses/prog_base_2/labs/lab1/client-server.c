@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "server.h"
+#include "client.h"
 
 #define COUNT_MES 50
 #define MAX_CLIENTS 20
@@ -104,7 +105,6 @@ struct server_s
 
  void client_t_send_mes (server_t * serv, client_t * sender, client_t * recipient, char message [50])
  {
-     int id = client_t_get_name(serv, sender);
      if (message == NULL || strlen(message)>100)
         serv->status = NO_MESSAGE;
      else
@@ -120,14 +120,13 @@ struct server_s
             recipient->status = RECIPIENT_OK;
             strcpy (recipient->Mess[recipient->count_mess], message);
             recipient->count_mess++;
-           // sender->name_of_client = id;
         }
  }
 
  void client_t_print_mes (server_t * serv, client_t * cl)
  {
      int i;
-    printf ("The messages to client with name %d:\n", client_t_get_name(serv, cl));
+    //printf ("The messages to client with name %d:\n", client_t_get_name(serv, cl));
      for (i = 0; i < cl->count_mess; i++)
              puts (cl->Mess[i]);
      if (serv != NULL && cl != NULL && client_t_check_serv (serv, cl) == 1)

@@ -1,0 +1,21 @@
+# depslib dependency file v1.0
+1460204578 source:d:\力\labs\lab1\lab1\testing\testing\client-server.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"server.h"
+	"client.h"
+
+1460204501 d:\力\labs\lab1\lab1\testing\testing\server.h
+
+1460204501 d:\力\labs\lab1\lab1\testing\testing\client.h
+
+1460204501 source:d:\力\labs\lab1\lab1\testing\testing\main.c
+	<stdlib.h>
+	<stdarg.h>
+	<stddef.h>
+	<setjmp.h>
+	<cmocka.h>
+	"server.h"
+	"client.h"
+
