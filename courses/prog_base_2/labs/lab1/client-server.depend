@@ -1,0 +1,54 @@
+# depslib dependency file v1.0
+1460160204 source:d:\ОП\labs\lab1\lab1\Новая папка\tryyyy\client-server\main.c
+	<stdlib.h>
+	<stdarg.h>
+	<stddef.h>
+	<setjmp.h>
+	<cmocka.h>
+	"server.h"
+
+1460160079 d:\ОП\labs\lab1\lab1\Новая папка\tryyyy\client-server\server.h
+
+1459553594 d:\ОП\labs\lab1\lab1\Новая папка\tryyyy\client-server\client.h
+	"server.c"
+	"client.c"
+	"server.h"
+
+1460125396 d:\ОП\labs\lab1\lab1\Новая папка\tryyyy\client-server\server.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"server.h"
+
+1459812255 d:\ОП\labs\lab1\lab1\Новая папка\tryyyy\client-server\client.c
+
+1460160119 source:d:\ОП\labs\lab1\lab1\Новая папка\tryyyy\client-server\server.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"server.h"
+
+1460198657 source:d:\ОП\labs\lab1\lab1\Новая папка\tryyyy\client-server main\client-server\server.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"server.h"
+
+1460160079 d:\ОП\labs\lab1\lab1\Новая папка\tryyyy\client-server main\client-server\server.h
+
+1460198657 source:d:\ОП\labs\lab1\lab1\Новая папка\tryyyy\client-server main\client-server\main.c
+	<stdlib.h>
+	<stdarg.h>
+	<stddef.h>
+	<setjmp.h>
+	<cmocka.h>
+	"server.h"
+
+1460198657 source:d:\repositories blackstee\blackstee\courses\prog_base_2\labs\lab1\server.c
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	"server.h"
+
+1460160079 d:\repositories blackstee\blackstee\courses\prog_base_2\labs\lab1\server.h
+
