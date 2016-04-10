@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<musicians>
+    <musician>
+        <name>Viktor</name>
+        <surname>Coj</surname>
+        <birthdate>1962-06-21</birthdate>
+        <year>1990</year>
+        <rating>5.0</rating>
+        <band style='rock'>
+            <role>singer</role>
+        </band>
+    </musician>
+    <musician>
+        <name>Freddie</name>
+        <surname>Mercury</surname>
+        <birthdate>1946-09-05</birthdate>
+        <year>1991</year>
+        <rating>5.0</rating>
+        <band style='rock'>
+            <role>singer</role>
+        </band>
+    </musician>
+    <musician>
+        <name>Michael</name>
+        <surname>Jackson</surname>
+        <birthdate>1958-08-29</birthdate>
+        <year>2009</year>
+        <rating>5.0</rating>
+        <band style='pop'>
+            <role>singer</role>
+        </band>
+    </musician>
+</musicians>
