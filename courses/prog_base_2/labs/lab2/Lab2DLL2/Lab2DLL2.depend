@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1460760676 source:d:\力\labs\lab2\lab2dll2\main.cpp
+	"main.h"
+	<stdio.h>
+
+1460756295 d:\力\labs\lab2\lab2dll2\main.h
+	<windows.h>
+	"list.h"
+
+1460759958 d:\力\labs\lab2\lab2dll2\list.h
+
+1460759336 source:d:\力\labs\lab2\lab2dll2\list.c
+	<stdio.h>
+	<stdlib.h>
+	"list.h"
+

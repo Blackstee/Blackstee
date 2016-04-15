@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1460761240 source:d:\но\labs\lab2\lab2app\main.c
+	<stdio.h>
+	<stdlib.h>
+	<time.h>
+	<windows.h>
+	"list.h"
+
+1460759967 d:\но\labs\lab2\lab2app\list.h
+

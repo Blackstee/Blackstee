@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1460760115 source:d:\но\labs\lab2\lab2staticlib\list.c
+	<stdio.h>
+	<stdlib.h>
+	"list.h"
+
+1460758310 d:\но\labs\lab2\lab2staticlib\list.h
+
+1460749185 source:d:\но\labs\lab2\lab2staticlib\main.c
+
