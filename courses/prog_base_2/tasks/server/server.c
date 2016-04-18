@@ -135,7 +135,8 @@ void server_musicianById(socket_t * client, http_request_t * req, const char * p
     int count = get_size_mus_arr ();
     long musIndex = strtol(pathBuf + strlen(pattern), &c, 10);
     if (musIndex < 0 || musIndex >= count) {
-        server_notFound(client);
+        error_t_add_err(err, NULL, "Wrong Index of musician");
+        server_sendJson(client, &err);
         return;
     }
     if (strcmp (req->method, "GET") == 0)
@@ -258,17 +259,10 @@ void server_musicianById(socket_t * client, http_request_t * req, const char * p
             {
                  musicians_arr[musIndex] = musician_empty();
 		         musicians_arr[musIndex].id = musIndex;
-		         char * deleted_mus = musician_toJSON(&musicians_arr[musIndex]);
-		         printf("Deleting of musician with id :%i has lasted successfully\n %s\n", musIndex, deleted_mus);
-		         char * Text = "Musician was deleted";
-		         sprintf(strbuf,
-			     "HTTP/1.1 200 OK\n"
-			     "Content-Type: application/json\n"
-			     "Content-Length: %zu\n"
-			     "Connection: keep-alive\n"
-			     "\n%s", strlen(Text), Text);
-		         free(deleted_mus);
-                 free (Text);
+		         if (musicians_arr[musIndex].year == 0)
+		         error_t_add_err(err, NULL, "Deleted successfully, no errors");
+		         else error_t_add_err (err, NULL, "Deleted unsuccessfully, Error");
+                 server_sendJson(client, &err);
         	}
         	else
             {

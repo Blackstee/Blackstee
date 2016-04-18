@@ -24,8 +24,8 @@ static cJSON * _musician_serializeJSON(const musician_t * self) {
 
 static cJSON * _error_serializeJSON(const error_t * self) {
     cJSON * jError = cJSON_CreateObject();
-    cJSON_AddItemToObject(jError, "status", cJSON_CreateNumber(self->status));
-	cJSON_AddItemToObject(jError, "error", cJSON_CreateString(self->error));
+    cJSON_AddItemToObject(jError, "Number of requests", cJSON_CreateNumber(self->status));
+	cJSON_AddItemToObject(jError, "Current existence of problem", cJSON_CreateString(self->error));
 	return jError;
 }
 musician_t
