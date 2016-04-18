@@ -1,0 +1,55 @@
+# depslib dependency file v1.0
+1460894953 source:d:\ÎÏ\äç\server\server\cjson.c
+	<string.h>
+	<stdio.h>
+	<math.h>
+	<stdlib.h>
+	<float.h>
+	<limits.h>
+	<ctype.h>
+	"cJSON.h"
+
+1460894956 d:\ÎÏ\äç\server\server\cjson.h
+
+1460901560 source:d:\ÎÏ\äç\server\server\http.c
+	<stddef.h>
+	"http.h"
+
+1460896678 d:\ÎÏ\äç\server\server\http.h
+
+1460917450 source:d:\ÎÏ\äç\server\server\main.c
+	<stdio.h>
+	<stdlib.h>
+	"server.h"
+	"http.h"
+	"musicians.h"
+	"socket.h"
+
+1460942605 d:\ÎÏ\äç\server\server\server.h
+	"http.h"
+	"musicians.h"
+	"socket.h"
+
+1460942605 d:\ÎÏ\äç\server\server\musicians.h
+
+1460895045 d:\ÎÏ\äç\server\server\socket.h
+
+1460942605 source:d:\ÎÏ\äç\server\server\musicians.c
+	<stdlib.h>
+	<stdio.h>
+	"cJSON.h"
+	"musicians.h"
+
+1460943428 source:d:\ÎÏ\äç\server\server\server.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"server.h"
+	"http.h"
+	"musicians.h"
+	"socket.h"
+
+1460895047 source:d:\ÎÏ\äç\server\server\socket.c
+	<winsock2.h>
+	"socket.h"
+
