@@ -3,9 +3,9 @@
 	"main.h"
 	<stdio.h>
 
-1460756295 d:\力\labs\lab2\lab2dll1\main.h
+1460976424 d:\力\labs\lab2\lab2dll1\main.h
 	<windows.h>
-	"list.h"
+	<list.h>
 
 1460759967 d:\力\labs\lab2\lab2dll1\list.h
 
@@ -13,4 +13,6 @@
 	<stdio.h>
 	<stdlib.h>
 	"list.h"
+
+1460758310 d:\力\labs\lab2\lab2staticlib\list.h
 

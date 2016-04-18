@@ -15,7 +15,7 @@ extern "C"
 {
 #endif
 
-#include "list.h"
+#include <list.h>
 
 int DLL_EXPORT compare(list_t * list1);
 void DLL_EXPORT reaction(list_t * list1);

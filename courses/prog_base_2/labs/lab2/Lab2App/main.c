@@ -3,7 +3,7 @@
 #include <time.h>
 #include <windows.h>
 
-#include "list.h"
+#include <list.h>
 
 typedef int (*cmp_f)(list_t * list1);
 typedef void (*react_f)(list_t * list1);
@@ -54,6 +54,8 @@ int main(void) {
         if(dll->cmp(list1)== 1 || dll->cmp(list1) == 0) {
             dll->react(list1);
         }
+    list_t_add_elem_end (list1, 'a');
+    list_t_add_elem_end (list1, 'e');
     list_t_add_elem_end (list1, 'a');
     list_t_add_elem_end (list1, 'e');
        list_t_print(list1);
