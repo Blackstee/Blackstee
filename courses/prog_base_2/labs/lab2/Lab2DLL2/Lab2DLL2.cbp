@@ -17,6 +17,7 @@
 					<Add option="-Wall" />
 					<Add option="-g" />
 					<Add option="-DBUILD_DLL" />
+					<Add directory="../Lab2StaticLib" />
 				</Compiler>
 				<Linker>
 					<Add library="user32" />
@@ -41,7 +42,6 @@
 				</Linker>
 			</Target>
 		</Build>
-		<Unit filename="list.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="main.h" />
 		<Extensions>
