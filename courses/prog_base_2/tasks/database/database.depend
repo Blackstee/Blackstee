@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1461550831 source:d:\ÎÏ\äç\database\database\db_manager.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<sqlite3.h>
+	"db_manager.h"
+	"musicians.h"
+
+1450771366 c:\libs\sqlite3\sqlite3.h
+	<stdarg.h>
+
+1461536884 d:\ÎÏ\äç\database\database\db_manager.h
+	<sqlite3.h>
+	"musicians.h"
+
+1461534611 d:\ÎÏ\äç\database\database\musicians.h
+
+1461550902 source:d:\ÎÏ\äç\database\database\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<sqlite3.h>
+	"db_manager.h"
+	"musicians.h"
+
+1461548118 source:d:\ÎÏ\äç\database\database\musicians.c
+	<stdlib.h>
+	<stdio.h>
+	"musicians.h"
+
