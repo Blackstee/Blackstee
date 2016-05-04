@@ -18,12 +18,15 @@
 	 Text text1("", font, 50);
 	 Text text2("", font, 50);
 	 Text text3("", font, 50);
+	 Text text4("", font, 50);
 	 text1.setString("NEW GAME");
 	 text2.setString("LOAD");
-	 text3.setString("EXIT");
+	 text3.setString("SETTINGS");
+	 text4.setString("EXIT");
 	 text1.setPosition(550,260);
-	 text2.setPosition(600,340);
-	 text3.setPosition(610,420);
+	 text2.setPosition(600,330);
+	 text3.setPosition(560,400);
+	 text4.setPosition(610,470);
 
 
 	 while(isMenu)
@@ -31,6 +34,7 @@
 		text1.setColor(Color(0,0,0));
 		text2.setColor(Color(0,0,0));
 		text3.setColor(Color(0,0,0));
+		text4.setColor(Color(0,0,0));
 		menuNum = 0;
 
 		 window.clear(Color(129,181,221));
@@ -39,15 +43,20 @@
 			 text1.setColor(Color(232,30,19));
 			 menuNum = 1;
 		 }
-		 if(IntRect(600,340,120,50).contains(Mouse::getPosition(window)))
+		 if(IntRect(600,330,120,50).contains(Mouse::getPosition(window)))
 		 {
 			 text2.setColor(Color(232,30,19));
 			 menuNum = 2;
 		 }
-		 if(IntRect(610,420,110,50).contains(Mouse::getPosition(window)))
+		 if(IntRect(560,400,250,50).contains(Mouse::getPosition(window)))
 		 {
 			 text3.setColor(Color(232,30,19));
 			 menuNum = 3;
+		 }
+         if(IntRect(610,470,110,50).contains(Mouse::getPosition(window)))
+		 {
+			 text4.setColor(Color(232,30,19));
+			 menuNum = 4;
 		 }
 
 
@@ -60,7 +69,7 @@
 				while(!Keyboard::isKeyPressed(Keyboard::Escape))
 				{;}
 			}
-			if(menuNum == 3)
+			if(menuNum == 4)
 			{
 				window.close();
 				isMenu = false;
@@ -70,13 +79,14 @@
 		 window.draw(text1);
 		 window.draw(text2);
 		 window.draw(text3);
+         window.draw(text4);
 		 window.display();
 	 }
  }
 
  int main()
  {
-	 RenderWindow window(VideoMode(1350,730),"GoNext", Style::Fullscreen);
+	 RenderWindow window(VideoMode(1350,730),"GoNext", Style::Default);
 	 window.setPosition(Vector2i(0,0));
 	 menu(window);
 
