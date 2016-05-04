@@ -1,79 +1,92 @@
-#include <SFML/Graphics.hpp>
+ #include <SFML/Graphics.hpp>
+ using namespace sf;
 
-using namespace sf;//включаем пространство имен sf, чтобы постоянно не писать sf::
 
-void menu(RenderWindow & window) {
-	Texture menuTexture1, menuTexture2, menuTexture3, aboutTexture, menuBackground;
-	menuTexture1.loadFromFile("images/play_as.png");
-	menuTexture2.loadFromFile("images/new_game.png");
-	menuTexture3.loadFromFile("images/another_pl.png");
-	menuBackground.loadFromFile("images/font.png");
-	Sprite menu1(menuTexture1), menu2(menuTexture2), menu3(menuTexture3), menuBg(menuBackground);
-	bool isMenu = 1;
-	int menuNum = 0;
-	menu1.setPosition(100, 30);
-	menu2.setPosition(100, 90);
-	menu3.setPosition(100, 150);
-	menuBg.setPosition(0, 0);
+ void menu(RenderWindow &window)
+ {
+	 Texture menuText2, menuBackground;
+	 menuBackground.loadFromFile("images/fontmenu.png");
+	 menuText2.loadFromFile("images/bookclosed.png");
+	 Sprite menuLoad(menuText2);
+	 Sprite menuBg(menuBackground);
+	 bool isMenu = 1;
+	 int menuNum = 0;
+	 menuBg.setPosition(0,0);
 
-	//////////////////////////////МЕНЮ///////////////////
-	while (isMenu)
-	{
-		menu1.setColor(Color::White);
-		menu2.setColor(Color::White);
-		menu3.setColor(Color::White);
+	 Font font;
+	 font.loadFromFile("COLONNA.ttf");
+	 Text text1("", font, 50);
+	 Text text2("", font, 50);
+	 Text text3("", font, 50);
+	 text1.setString("NEW GAME");
+	 text2.setString("LOAD");
+	 text3.setString("EXIT");
+	 text1.setPosition(550,260);
+	 text2.setPosition(600,340);
+	 text3.setPosition(610,420);
+
+
+	 while(isMenu)
+	 {
+		text1.setColor(Color(0,0,0));
+		text2.setColor(Color(0,0,0));
+		text3.setColor(Color(0,0,0));
 		menuNum = 0;
-		window.clear(Color(129, 181, 221));
 
-		if (IntRect(100, 30, 300, 50).contains(Mouse::getPosition(window))) { menu1.setColor(Color::Blue); menuNum = 1; }
-		if (IntRect(100, 90, 300, 50).contains(Mouse::getPosition(window))) { menu2.setColor(Color::Blue); menuNum = 2; }
-		if (IntRect(100, 150, 300, 50).contains(Mouse::getPosition(window))) { menu3.setColor(Color::Blue); menuNum = 3; }
+		 window.clear(Color(129,181,221));
+		 if(IntRect(550,260,250,50).contains(Mouse::getPosition(window)))
+		 {
+			 text1.setColor(Color(232,30,19));
+			 menuNum = 1;
+		 }
+		 if(IntRect(600,340,120,50).contains(Mouse::getPosition(window)))
+		 {
+			 text2.setColor(Color(232,30,19));
+			 menuNum = 2;
+		 }
+		 if(IntRect(610,420,110,50).contains(Mouse::getPosition(window)))
+		 {
+			 text3.setColor(Color(232,30,19));
+			 menuNum = 3;
+		 }
 
-		if (Mouse::isButtonPressed(Mouse::Left))
+
+		if(Mouse::isButtonPressed(Mouse::Left))
 		{
-			if (menuNum == 1) isMenu = false;//если нажали первую кнопку, то выходим из меню
-			if (menuNum == 2) isMenu = false;
-			if (menuNum == 3)  isMenu = false;
-
-		}
-
-		window.draw(menuBg);
-		window.draw(menu1);
-		window.draw(menu2);
-		window.draw(menu3);
-
-		window.display();
-	}
-	////////////////////////////////////////////////////
-}
-
-int main()
-{
-	RenderWindow window(sf::VideoMode(945, 525), "GoNext"); //увеличили для удобства размер окна
-    menu(window);
-	Image heroimage; //создаем объект Image (изображение)
-	heroimage.loadFromFile("images/font.png");//загружаем в него файл
-
-	Texture herotexture;//создаем объект Texture (текстура)
-	herotexture.loadFromImage(heroimage);//передаем в него объект Image (изображения)
-
-	Sprite herosprite;//создаем объект Sprite(спрайт)
-	herosprite.setTexture(herotexture);//передаём в него объект Texture (текстуры)
-	herosprite.setPosition(0, 0);//задаем начальные координаты появления спрайта
-
-	while (window.isOpen())
-	{
-		sf::Event event;
-		while (window.pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
+			if(menuNum == 2)
+			{
+				window.draw(menuLoad);
+				window.display();
+				while(!Keyboard::isKeyPressed(Keyboard::Escape))
+				{;}
+			}
+			if(menuNum == 3)
+			{
 				window.close();
+				isMenu = false;
+			}
 		}
+		 window.draw(menuBg);
+		 window.draw(text1);
+		 window.draw(text2);
+		 window.draw(text3);
+		 window.display();
+	 }
+ }
 
-		window.clear();
-		window.draw(herosprite);//выводим спрайт на экран
-		window.display();
-	}
+ int main()
+ {
+	 RenderWindow window(VideoMode(1350,730),"GoNext", Style::Fullscreen);
+	 window.setPosition(Vector2i(0,0));
+	 menu(window);
 
-	return 0;
-}
+	  while (window.isOpen())
+    {
+        sf::Event event;
+        while (window.pollEvent(event))
+        {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+    }
+ }
