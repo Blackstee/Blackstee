@@ -90,7 +90,7 @@ int choice (RenderWindow &window)
 				isMenu = false;
 				puts ("choice num 2");
 				//gamemap(window, 0);
-				moves(window, 2);
+				moves(window, 3);
 			}
 			if(menuNum == 3)
 			{
@@ -124,10 +124,43 @@ void moves(RenderWindow &window, int heroNum)
 	herotexture.loadFromImage(heroimage);//передаем в него объект Image (изображения)
 	Sprite herosprite;//создаем объект Sprite(спрайт)
 	herosprite.setTexture(herotexture);//передаём в него объект Texture (текстуры)
-	int x = 0;
-	int y = 0;
+	int x;
+    int y;
+    if (heroNum == 1)
+    {
+        x = 0;
+        y = 0;
+    } else if (heroNum == 2)
+    {
+        x = 1;
+        y = 0;
+    } else if (heroNum == 3)
+    {
+        x = 2;
+        y = 0;
+    } else if (heroNum == 4)
+    {
+        x = 3;
+        y = 0;
+    } else if (heroNum == 5)
+    {
+        x = 0;
+        y = 1;
+    } else if (heroNum == 6)
+    {
+        x = 1;
+        y = 1;
+    } else if (heroNum == 7)
+    {
+        x = 2;
+        y = 1;
+    } else if (heroNum == 8)
+    {
+        x = 3;
+        y = 1;
+    }
 	herosprite.setTextureRect(IntRect(32*3*x + 32,48*4*y + 0,32,48));
-	herosprite.setPosition(50, 25);//задаем начальные координаты появления спрайта
+	herosprite.setPosition(75, 390);//задаем начальные координаты появления спрайта
 while (window.isOpen())
 	{
         float time = clock.getElapsedTime().asMicroseconds(); //дать прошедшее время в микросекундах
