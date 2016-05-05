@@ -1,8 +1,12 @@
  #include <SFML/Graphics.hpp>
+ #include <SFML/Audio.hpp>
 
  using namespace sf;
 
 void menu(RenderWindow &window);
+void moves(RenderWindow &window, int heroNum);
+void gamemap (RenderWindow &window, int choiceNum);
+int choice (RenderWindow &window);
 
 void gamemap (RenderWindow &window, int choiceNum)
 {
@@ -23,13 +27,14 @@ void gamemap (RenderWindow &window, int choiceNum)
 	while (window.isOpen())
 	{
 		//window.clear();
+		puts ("map");
 		window.draw(mapBg);
 		window.draw(herosprite);
 		window.display();
 	}
 
 }
-void choice (RenderWindow &window)
+int choice (RenderWindow &window)
 {
     Texture choiceBackground;
 	 choiceBackground.loadFromFile("images/choiceBG.png");
@@ -55,7 +60,8 @@ void choice (RenderWindow &window)
 		text1.setColor(Color(0,0,0));
 		text2.setColor(Color(0,0,0));
 		text3.setColor(Color(0,0,0));
-		choiceNum = 0;
+		menuNum = 0;
+
 		 window.clear(Color(129,181,221));
 		 if(IntRect(570,120,150,50).contains(Mouse::getPosition(window)))
 		 {
@@ -72,19 +78,25 @@ void choice (RenderWindow &window)
 			 text3.setColor(Color(232,30,19));
 			 menuNum = 3;
 		 }
-	    if(Mouse::isButtonPressed(Mouse::Left))
+		if(Mouse::isButtonPressed(Mouse::Left))
 		{
-		   if (menuNum == 1)
+			if (menuNum == 1)
             {
-                //function which helps to enter the name
+                isMenu = false;
+                puts ("choice num 1");
             }
-            if (menuNum == 2)
-            {
-                gamemap (window, 0);
-            }
+			if(menuNum == 2)
+			{
+				isMenu = false;
+				puts ("choice num 2");
+				//gamemap(window, 0);
+				moves(window, 2);
+			}
 			if(menuNum == 3)
 			{
-			    menu(window);
+			    isMenu = false;
+			    puts ("choice num 3");
+				return 1;//menu (window);
 			}
 		}
 		 window.draw(choiceBg);
@@ -92,10 +104,16 @@ void choice (RenderWindow &window)
 		 window.draw(text2);
 		 window.draw(text3);
 		 window.display();
+		 puts ("choice not made");
 	 }
+	 puts ("end of choice");
+	 return 0;
 }
-void moves(RenderWindow &window)
+void moves(RenderWindow &window, int heroNum)
 {
+    Texture mapBackground;
+    mapBackground.loadFromFile ("images/room1BG.png");
+    Sprite mapBg(mapBackground);
     float CurrentFrame = 0;//кадр
     Clock clock;//переменная времени
 
@@ -104,11 +122,10 @@ void moves(RenderWindow &window)
     heroimage.createMaskFromColor(Color(255, 255, 255));
 	Texture herotexture;//создаем объект Texture (текстура)
 	herotexture.loadFromImage(heroimage);//передаем в него объект Image (изображения)
-
-    int x = 3;
-    int y = 1;
 	Sprite herosprite;//создаем объект Sprite(спрайт)
 	herosprite.setTexture(herotexture);//передаём в него объект Texture (текстуры)
+	int x = 0;
+	int y = 0;
 	herosprite.setTextureRect(IntRect(32*3*x + 32,48*4*y + 0,32,48));
 	herosprite.setPosition(50, 25);//задаем начальные координаты появления спрайта
 while (window.isOpen())
@@ -154,6 +171,7 @@ while (window.isOpen())
 		}
 
 		window.clear();
+		window.draw(mapBg);
 		window.draw(herosprite);
 		window.display();
 	}
@@ -182,7 +200,9 @@ void menu(RenderWindow &window)
 	 text2.setPosition(600,330);
 	 text3.setPosition(560,400);
 	 text4.setPosition(610,470);
-
+     sf::Music music;
+     music.openFromFile("sounds/joker.ogg");
+     music.play();
 
 	 while(isMenu)
 	 {
@@ -219,7 +239,8 @@ void menu(RenderWindow &window)
 		{
 			if (menuNum == 1)
             {
-                choice (window);
+                isMenu = false;
+                isMenu = choice (window) ;
             }
 			/*if(menuNum == 2)
 			{
@@ -230,8 +251,8 @@ void menu(RenderWindow &window)
 			}*/
 			if(menuNum == 4)
 			{
+			    isMenu = false;
 				window.close();
-				isMenu = false;
 			}
 		}
 		 window.draw(menuBg);
@@ -240,7 +261,9 @@ void menu(RenderWindow &window)
 		 window.draw(text3);
          window.draw(text4);
 		 window.display();
+		 puts ("menuu");
 	 }
+	 puts ("end of menu");
  }
 
  int main()
@@ -248,6 +271,7 @@ void menu(RenderWindow &window)
 	 RenderWindow window(VideoMode(1350,730),"GoNext", Style::Default);
 	 window.setPosition(Vector2i(0,0));
 	 menu(window);
+	 puts ("int main");
 
 	  while (window.isOpen())
     {
