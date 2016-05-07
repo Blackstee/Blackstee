@@ -7,6 +7,32 @@ void menu(RenderWindow &window);
 void moves(RenderWindow &window, int heroNum);
 void gamemap (RenderWindow &window, int choiceNum);
 int choice (RenderWindow &window);
+int getxofhero (RenderWindow &window, int heroNum);
+int getyofhero (RenderWindow &window, int heroNum);
+
+int getxofhero(RenderWindow &window, int heroNum)
+{
+    int x;
+    if (heroNum == 1 || heroNum == 5)
+       x = 0;
+     else if (heroNum == 2 || heroNum == 6)
+         x = 1;
+       else if (heroNum == 3 || heroNum == 7)
+           x = 2;
+         else if (heroNum == 4 || heroNum == 8)
+             x = 3;
+     return x;
+}
+
+int getyofhero (RenderWindow &window, int heroNum)
+{
+    int y;
+    if (heroNum >= 1 && heroNum <= 4)
+        y = 0;
+    else
+        y = 1;
+    return y;
+}
 
 void gamemap (RenderWindow &window, int choiceNum)
 {
@@ -36,9 +62,28 @@ void gamemap (RenderWindow &window, int choiceNum)
 }
 int choice (RenderWindow &window)
 {
+    Image hero1, hero2, hero3, hero4, hero5, hero6, hero7, hero8;
     Texture choiceBackground;
 	 choiceBackground.loadFromFile("images/choiceBG.png");
 	 Sprite choiceBg(choiceBackground);
+	 hero1.loadFromFile("images/hero1.png");
+	 hero1.createMaskFromColor(Color(255, 255, 255));
+	 Texture hero1texture;//создаем объект Texture (текстура)
+	hero1texture.loadFromImage(hero1);//передаем в него объект Image (изображения)
+	Sprite hero1sprite;//создаем объект Sprite(спрайт)
+	hero1sprite.setTexture(hero1texture);//передаём в него объект Texture (текстуры)
+	hero1sprite.setPosition(400, 200);
+
+	 /*Image heroimage; //создаем объект Image (изображение)
+	heroimage.loadFromFile("images/manyheroes2.png");//загружаем в него файл
+    heroimage.createMaskFromColor(Color(255, 255, 255));
+	Texture herotexture;//создаем объект Texture (текстура)
+	herotexture.loadFromImage(heroimage);//передаем в него объект Image (изображения)
+	Sprite herosprite;//создаем объект Sprite(спрайт)
+	herosprite.setTexture(herotexture);//передаём в него объект Texture (текстуры)
+	herosprite.setTextureRect(IntRect(32*3*x + 32,48*4*y + 0,32,48));
+	herosprite.setPosition(75, 390);*/
+
 	 //bool isChoice = 1;
 	 int choiceNum = 0;
 	 bool isMenu = 1;
@@ -63,9 +108,53 @@ int choice (RenderWindow &window)
 		menuNum = 0;
 
 		 window.clear(Color(129,181,221));
+		 if(IntRect(400,200,50,50).contains(Mouse::getPosition(window)))
+		 {
+		         window.draw(choiceBg);
+		         window.draw(text1);
+		         window.draw(text2);
+		         window.draw(text3);
+		    	 window.draw(hero1sprite);
+                 window.display();
+		 }
+		 /*if(IntRect(570,120,150,50).contains(Mouse::getPosition(window)))
+		 {
+			 text1.setString("");
+			 menuNum = 1;
+		 }
 		 if(IntRect(570,120,150,50).contains(Mouse::getPosition(window)))
 		 {
 			 text1.setString("");
+			 menuNum = 1;
+		 }
+		 if(IntRect(570,120,150,50).contains(Mouse::getPosition(window)))
+		 {
+			 text1.setString("");
+			 menuNum = 1;
+		 }
+		 if(IntRect(570,120,150,50).contains(Mouse::getPosition(window)))
+		 {
+			 text1.setString("");
+			 menuNum = 1;
+		 }
+		 if(IntRect(570,120,150,50).contains(Mouse::getPosition(window)))
+		 {
+			 text1.setString("");
+			 menuNum = 1;
+		 }
+		 if(IntRect(570,120,150,50).contains(Mouse::getPosition(window)))
+		 {
+			 text1.setString("");
+			 menuNum = 1;
+		 }
+		 if(IntRect(570,120,150,50).contains(Mouse::getPosition(window)))
+		 {
+			 text1.setString("");
+			 menuNum = 1;
+		 }*/
+		 if(IntRect(570,120,150,50).contains(Mouse::getPosition(window)))
+		 {
+			 text1.setString("|");
 			 menuNum = 1;
 		 }
 		 if(IntRect(1050,635,250,50).contains(Mouse::getPosition(window)))
@@ -124,41 +213,8 @@ void moves(RenderWindow &window, int heroNum)
 	herotexture.loadFromImage(heroimage);//передаем в него объект Image (изображения)
 	Sprite herosprite;//создаем объект Sprite(спрайт)
 	herosprite.setTexture(herotexture);//передаём в него объект Texture (текстуры)
-	int x;
-    int y;
-    if (heroNum == 1)
-    {
-        x = 0;
-        y = 0;
-    } else if (heroNum == 2)
-    {
-        x = 1;
-        y = 0;
-    } else if (heroNum == 3)
-    {
-        x = 2;
-        y = 0;
-    } else if (heroNum == 4)
-    {
-        x = 3;
-        y = 0;
-    } else if (heroNum == 5)
-    {
-        x = 0;
-        y = 1;
-    } else if (heroNum == 6)
-    {
-        x = 1;
-        y = 1;
-    } else if (heroNum == 7)
-    {
-        x = 2;
-        y = 1;
-    } else if (heroNum == 8)
-    {
-        x = 3;
-        y = 1;
-    }
+	int x = getxofhero(window, heroNum);
+    int y = getyofhero(window, heroNum);
 	herosprite.setTextureRect(IntRect(32*3*x + 32,48*4*y + 0,32,48));
 	herosprite.setPosition(75, 390);//задаем начальные координаты появления спрайта
 while (window.isOpen())
