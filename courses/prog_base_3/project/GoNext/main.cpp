@@ -62,29 +62,16 @@ void gamemap (RenderWindow &window, int choiceNum)
 }
 int choice (RenderWindow &window)
 {
-    Image hero1, hero2, hero3, hero4, hero5, hero6, hero7, hero8;
-    Texture choiceBackground;
+     Image heroimage;
+     Texture choiceBackground;
 	 choiceBackground.loadFromFile("images/choiceBG.png");
 	 Sprite choiceBg(choiceBackground);
-	 hero1.loadFromFile("images/hero1.png");
-	 hero1.createMaskFromColor(Color(255, 255, 255));
-	 Texture hero1texture;//создаем объект Texture (текстура)
-	hero1texture.loadFromImage(hero1);//передаем в него объект Image (изображения)
-	Sprite hero1sprite;//создаем объект Sprite(спрайт)
-	hero1sprite.setTexture(hero1texture);//передаём в него объект Texture (текстуры)
-	hero1sprite.setPosition(400, 200);
-
-	 /*Image heroimage; //создаем объект Image (изображение)
-	heroimage.loadFromFile("images/manyheroes2.png");//загружаем в него файл
-    heroimage.createMaskFromColor(Color(255, 255, 255));
-	Texture herotexture;//создаем объект Texture (текстура)
-	herotexture.loadFromImage(heroimage);//передаем в него объект Image (изображения)
-	Sprite herosprite;//создаем объект Sprite(спрайт)
-	herosprite.setTexture(herotexture);//передаём в него объект Texture (текстуры)
-	herosprite.setTextureRect(IntRect(32*3*x + 32,48*4*y + 0,32,48));
-	herosprite.setPosition(75, 390);*/
-
-	 //bool isChoice = 1;
+	 heroimage.loadFromFile("images/manyheroes2.png");
+	 heroimage.createMaskFromColor(Color(255, 255, 255));
+	 Texture herotexture;
+	 herotexture.loadFromImage(heroimage);
+	 Sprite herosprite;
+	 herosprite.setTexture(herotexture);
 	 int choiceNum = 0;
 	 bool isMenu = 1;
 	 int menuNum = 0;
@@ -100,6 +87,8 @@ int choice (RenderWindow &window)
 	 text1.setPosition(570,120);
 	 text2.setPosition(1050,635);
 	 text3.setPosition(80,635);
+	 int heroNum = 1;
+	 int heroNumst = 1;
 	 while(isMenu)
 	 {
 		text1.setColor(Color(0,0,0));
@@ -108,50 +97,70 @@ int choice (RenderWindow &window)
 		menuNum = 0;
 
 		 window.clear(Color(129,181,221));
-		 if(IntRect(400,200,50,50).contains(Mouse::getPosition(window)))
+		 if(IntRect(350,270,100,100).contains(Mouse::getPosition(window)))
 		 {
-		         window.draw(choiceBg);
-		         window.draw(text1);
-		         window.draw(text2);
-		         window.draw(text3);
-		    	 window.draw(hero1sprite);
-                 window.display();
+                heroNum  = 1;
+                int x = getxofhero(window, 1);
+                int y = getyofhero(window, 1);
+	            herosprite.setTextureRect(IntRect(32*3*2*x + 32*2,48*4*2*y + 0,32*2,48*2));
+	            herosprite.setPosition(350, 270);
 		 }
-		 /*if(IntRect(570,120,150,50).contains(Mouse::getPosition(window)))
+		 if(IntRect(355,430,100,100).contains(Mouse::getPosition(window)))
 		 {
-			 text1.setString("");
-			 menuNum = 1;
+		        heroNum = 5;
+                int x = getxofhero(window, 5);
+                int y = getyofhero(window, 5);
+	            herosprite.setTextureRect(IntRect(32*3*2*x + 32*2,48*4*2*y + 0,32*2,48*2));
+	            herosprite.setPosition(355, 430);
 		 }
-		 if(IntRect(570,120,150,50).contains(Mouse::getPosition(window)))
+		 if(IntRect(540,270,100,100).contains(Mouse::getPosition(window)))
 		 {
-			 text1.setString("");
-			 menuNum = 1;
+		        heroNum = 2;
+                int x = getxofhero(window, 2);
+                int y = getyofhero(window, 2);
+	            herosprite.setTextureRect(IntRect(32*3*2*x + 32*2,48*4*2*y + 0,32*2,48*2));
+	            herosprite.setPosition(540, 270);
 		 }
-		 if(IntRect(570,120,150,50).contains(Mouse::getPosition(window)))
+		 if(IntRect(540,430,100,100).contains(Mouse::getPosition(window)))
 		 {
-			 text1.setString("");
-			 menuNum = 1;
+                heroNum = 6;
+                int x = getxofhero(window, 6);
+                int y = getyofhero(window, 6);
+	            herosprite.setTextureRect(IntRect(32*3*2*x + 32*2,48*4*2*y + 0,32*2,48*2));
+	            herosprite.setPosition(540, 430);
 		 }
-		 if(IntRect(570,120,150,50).contains(Mouse::getPosition(window)))
+		 if(IntRect(725,270,100,100).contains(Mouse::getPosition(window)))
 		 {
-			 text1.setString("");
-			 menuNum = 1;
+                heroNum = 3;
+                int x = getxofhero(window, 3);
+                int y = getyofhero(window, 3);
+	            herosprite.setTextureRect(IntRect(32*3*2*x + 32*2,48*4*2*y + 0,32*2,48*2));
+	            herosprite.setPosition(725, 270);
 		 }
-		 if(IntRect(570,120,150,50).contains(Mouse::getPosition(window)))
+		 if(IntRect(727,430,100,100).contains(Mouse::getPosition(window)))
 		 {
-			 text1.setString("");
-			 menuNum = 1;
+                heroNum = 7;
+                int x = getxofhero(window, 7);
+                int y = getyofhero(window, 7);
+	            herosprite.setTextureRect(IntRect(32*3*2*x + 32*2,48*4*2*y + 0,32*2,48*2));
+	            herosprite.setPosition(727, 430);
 		 }
-		 if(IntRect(570,120,150,50).contains(Mouse::getPosition(window)))
+		 if(IntRect(915,270,100,100).contains(Mouse::getPosition(window)))
 		 {
-			 text1.setString("");
-			 menuNum = 1;
+                heroNum = 4;
+                int x = getxofhero(window, 4);
+                int y = getyofhero(window, 4);
+	            herosprite.setTextureRect(IntRect(32*3*2*x + 32*2,48*4*2*y + 0,32*2,48*2));
+	            herosprite.setPosition(915, 270);
 		 }
-		 if(IntRect(570,120,150,50).contains(Mouse::getPosition(window)))
+		 if(IntRect(915,430,100,100).contains(Mouse::getPosition(window)))
 		 {
-			 text1.setString("");
-			 menuNum = 1;
-		 }*/
+                heroNum = 8;
+                int x = getxofhero(window, 8);
+                int y = getyofhero(window, 8);
+	            herosprite.setTextureRect(IntRect(32*3*2*x + 32*2,48*4*2*y + 0,32*2,48*2));
+	            herosprite.setPosition(915, 430);
+		 }
 		 if(IntRect(570,120,150,50).contains(Mouse::getPosition(window)))
 		 {
 			 text1.setString("|");
@@ -178,8 +187,8 @@ int choice (RenderWindow &window)
 			{
 				isMenu = false;
 				puts ("choice num 2");
-				//gamemap(window, 0);
-				moves(window, 3);
+				//gamemap(window, heroNum);
+				moves(window, heroNumst);
 			}
 			if(menuNum == 3)
 			{
@@ -187,11 +196,15 @@ int choice (RenderWindow &window)
 			    puts ("choice num 3");
 				return 1;//menu (window);
 			}
+			if (heroNum >= 1 && heroNum <= 8)
+                heroNumst = heroNum;
+
 		}
 		 window.draw(choiceBg);
 		 window.draw(text1);
 		 window.draw(text2);
 		 window.draw(text3);
+		 window.draw(herosprite);
 		 window.display();
 		 puts ("choice not made");
 	 }
@@ -207,7 +220,7 @@ void moves(RenderWindow &window, int heroNum)
     Clock clock;//переменная времени
 
 	Image heroimage; //создаем объект Image (изображение)
-	heroimage.loadFromFile("images/manyheroes1.png");//загружаем в него файл
+	heroimage.loadFromFile("images/manyheroes2.png");//загружаем в него файл
     heroimage.createMaskFromColor(Color(255, 255, 255));
 	Texture herotexture;//создаем объект Texture (текстура)
 	herotexture.loadFromImage(heroimage);//передаем в него объект Image (изображения)
@@ -215,8 +228,8 @@ void moves(RenderWindow &window, int heroNum)
 	herosprite.setTexture(herotexture);//передаём в него объект Texture (текстуры)
 	int x = getxofhero(window, heroNum);
     int y = getyofhero(window, heroNum);
-	herosprite.setTextureRect(IntRect(32*3*x + 32,48*4*y + 0,32,48));
-	herosprite.setPosition(75, 390);//задаем начальные координаты появления спрайта
+	herosprite.setTextureRect(IntRect(32*3*x*2 + 32*2,48*4*y*2 + 0,32*2,48*2));
+	herosprite.setPosition(75, 350);//задаем начальные координаты появления спрайта
 while (window.isOpen())
 	{
         float time = clock.getElapsedTime().asMicroseconds(); //дать прошедшее время в микросекундах
@@ -232,14 +245,14 @@ while (window.isOpen())
 		if ((Keyboard::isKeyPressed(Keyboard::Left) || (Keyboard::isKeyPressed(Keyboard::A)))) {
 			CurrentFrame += 0.005*time;
 			if (CurrentFrame > 3) CurrentFrame -= 3; //проходимся по кадрам с первого по третий включительно. если пришли к третьему кадру - откидываемся назад.
-			herosprite.setTextureRect(IntRect(x*32*3 + 32 * int(CurrentFrame), y*48*4 + 48, 32, 48)); //проходимся по координатам Х. получается 96,96*2,96*3 и опять 96
+			herosprite.setTextureRect(IntRect(x*32*3*2 + 2 * 32 * int(CurrentFrame), y*48*4*2 + 48*2, 32*2, 48*2)); //проходимся по координатам Х. получается 96,96*2,96*3 и опять 96
 			herosprite.move(-0.1*time, 0);//движение персонажа влево
 		}
 
 		if ((Keyboard::isKeyPressed(Keyboard::Right) || (Keyboard::isKeyPressed(Keyboard::D)))) {
 			CurrentFrame += 0.005*time;
 			if (CurrentFrame > 3) CurrentFrame -= 3;
-			herosprite.setTextureRect(IntRect(x*32*3 + 32 * int(CurrentFrame), y*48*4 + 96, 32, 48));
+			herosprite.setTextureRect(IntRect(x*32*3*2 + 2*32 * int(CurrentFrame), y*48*4*2 + 96*2, 32*2, 48*2));
 			herosprite.move(0.1*time, 0);
 
 		}
@@ -248,14 +261,14 @@ while (window.isOpen())
 		if ((Keyboard::isKeyPressed(Keyboard::Up) || (Keyboard::isKeyPressed(Keyboard::W)))) {
 			CurrentFrame += 0.005*time;
 			if (CurrentFrame > 3) CurrentFrame -= 3;
-			herosprite.setTextureRect(IntRect(x*32*3 + 32 * int(CurrentFrame),y*48*4 + 144, 32, 48));
+			herosprite.setTextureRect(IntRect(x*32*3*2 + 2*32 * int(CurrentFrame),y*48*4*2 + 144*2, 32*2, 48*2));
 			herosprite.move(0, -0.1*time);
 		}
 
 		if ((Keyboard::isKeyPressed(Keyboard::Down) || (Keyboard::isKeyPressed(Keyboard::S)))) {
 			CurrentFrame += 0.005*time;
 			if (CurrentFrame > 3) CurrentFrame -= 3;
-			herosprite.setTextureRect(IntRect(x*32*3 + 32 * int(CurrentFrame),y*48*4 + 0, 32, 48));
+			herosprite.setTextureRect(IntRect(x*32*3*2 + 2*32 * int(CurrentFrame),y*48*4*2 + 0, 32*2, 48*2));
 			herosprite.move(0, 0.1*time);
 		}
 
