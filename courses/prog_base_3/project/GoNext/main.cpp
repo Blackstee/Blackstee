@@ -9,6 +9,45 @@ void gamemap (RenderWindow &window, int choiceNum);
 int choice (RenderWindow &window);
 int getxofhero (RenderWindow &window, int heroNum);
 int getyofhero (RenderWindow &window, int heroNum);
+//void movebymouse (RenderWindow &window, int heroNum);
+
+class Object
+{
+public:
+	String file;
+	Image image;
+	Texture texture;
+	Sprite sprite;
+	bool isSelected, isMoving, isInGroup;
+	int group;
+	float x, y, hor, ver, curx, cury;
+
+	Object:: Object(String Str, int Group, float X, float Y, float Horiz, float Vertic, float curX, float curY)
+	{
+		file = Str;
+		isSelected = false;
+		isMoving = false;
+		isInGroup  = false;
+		group = Group;
+		x = X;
+		y = Y;
+		hor = Horiz;
+		ver = Vertic;
+		curx = curX;
+        cury = curY;
+		image.loadFromFile("images/" + file);
+		texture.loadFromImage(image);
+		sprite.setTexture(texture);
+		sprite.setTextureRect(IntRect(x, y, hor, ver));
+		sprite.setPosition(curX, curY);
+	}
+};
+
+
+/*void movebymouse (RenderWindow &window, int heroNum)
+{
+
+}*/
 
 int getxofhero(RenderWindow &window, int heroNum)
 {

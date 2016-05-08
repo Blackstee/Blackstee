@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1462660334 source:d:\ОП\курсач\hero\gonext\main.cpp
+1462732493 source:d:\ОП\курсач\hero\gonext\main.cpp
 	<SFML/Graphics.hpp>
 	<SFML/Audio.hpp>
 
@@ -483,4 +483,10 @@
 1429780453 d:\mbi\sfml\sfml-2.3.2-windows-gcc-4.8.1-tdm-32-bit (1)\sfml-2.3.2\include\sfml\audio\soundfilewriter.hpp
 	<SFML/Audio/Export.hpp>
 	<string>
+
+1462730108 d:\ОП\курсач\hero\gonext\menu.h
+	<SFML/Graphics.hpp>
+	<SFML/Audio.hpp>
+
+1462730233 source:d:\ОП\курсач\hero\gonext\menu.cpp
 
