@@ -1,0 +1,12 @@
+# depslib dependency file v1.0
+1463819966 source:d:\ОП\tes_1\Новая папка\lib_list\list.c
+	<stdlib.h>
+	"list.h"
+
+1463822110 d:\ОП\tes_1\Новая папка\lib_list\list.h
+	<stdlib.h>
+	<time.h>
+	"list.h"
+
+1463822082 source:d:\ОП\tes_1\Новая папка\lib_list\main.c
+
