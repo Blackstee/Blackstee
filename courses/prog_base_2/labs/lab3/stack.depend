@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1463831094 source:d:\ОП\tes_1\Новая папка\stack\stack\list.c
+	<stdio.h>
+	<stdlib.h>
+	"list.h"
+
+1463831094 d:\ОП\tes_1\Новая папка\stack\stack\list.h
+
+1463836775 source:d:\ОП\tes_1\Новая папка\stack\stack\main.c
+	<stdlib.h>
+	<stdio.h>
+	<stdarg.h>
+	<stddef.h>
+	<setjmp.h>
+	"list.h"
+	"stack.h"
+	<cmocka.h>
+	<time.h>
+
+1463833224 d:\ОП\tes_1\Новая папка\stack\stack\stack.h
+	"list.h"
+
+1463837631 source:d:\ОП\tes_1\Новая папка\stack\stack\stack.c
+	"stack.h"
+	"list.h"
+	<stdlib.h>
+	<stdio.h>
+
