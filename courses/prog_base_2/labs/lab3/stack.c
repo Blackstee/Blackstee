@@ -156,30 +156,30 @@ void stack_Event (void * listener, stack_t * stack, enum status_en status, int v
     char message[70];
     stack_t * st;
     st = (stack_t *)listener;
-    if (status = 0)
+    if (status == 0)
     {
         if(st->count < 10)
         {
             sprintf(message, "The stack number %i is FULL\n", stack->number);
             printf(message);
-            stack_push(st, value);
+            stack_t_push(st, value);
         }
         else
         {
 
             for(int i = 0; i < list_getCount(st->multi); i++)
             {
-                event_t * ev = list_getElem(st->multi, i);
+                event_t * ev = list_getEl(st->multi, i);
                 multi (ev, message, st, 2, 1);
             }
             for(int i = 0; i < list_getCount(stack->multi); i++)
             {
-                event_t * ev = list_getElem(stack->multi, i);
+                event_t * ev = list_getEl(stack->multi, i);
                 multi (ev, message, stack, 2, 1);
             }
         }
     }
-    else
+    else if (status == 1)
     {
          if(st->count > 0)
         {

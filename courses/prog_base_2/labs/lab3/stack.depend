@@ -26,3 +26,24 @@
 	<stdlib.h>
 	<stdio.h>
 
+1463831094 source:d:\repositories blackstee\blackstee\courses\prog_base_2\labs\lab3\list.c
+	<stdio.h>
+	<stdlib.h>
+	"list.h"
+
+1463831094 d:\repositories blackstee\blackstee\courses\prog_base_2\labs\lab3\list.h
+
+1463836775 source:d:\repositories blackstee\blackstee\courses\prog_base_2\labs\lab3\main.c
+	<stdlib.h>
+	<stdio.h>
+	<stdarg.h>
+	<stddef.h>
+	<setjmp.h>
+	"list.h"
+	"stack.h"
+	<cmocka.h>
+	<time.h>
+
+1463833224 d:\repositories blackstee\blackstee\courses\prog_base_2\labs\lab3\stack.h
+	"list.h"
+
