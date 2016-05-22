@@ -49,4 +49,6 @@ void stack_subscribe_full (stack_t * stack, void * listener, cb_fn cb);
 
 void stack_Event (void * listener, stack_t * stack, enum status_en status, int value);
 
+void multi (event_t * ev, char message[70] , stack_t * st, int status, int value);
+
 #endif // STACK_H_INCLUDED

@@ -44,6 +44,12 @@
 	<cmocka.h>
 	<time.h>
 
-1463833224 d:\repositories blackstee\blackstee\courses\prog_base_2\labs\lab3\stack.h
+1463950852 d:\repositories blackstee\blackstee\courses\prog_base_2\labs\lab3\stack.h
 	"list.h"
+
+1463949893 source:d:\repositories blackstee\blackstee\courses\prog_base_2\labs\lab3\stack.c
+	"stack.h"
+	"list.h"
+	<stdlib.h>
+	<stdio.h>
 

@@ -140,7 +140,7 @@ void stack_subscribe_multi (stack_t * stack, void * listener, cb_fn cb)
     list_push_back(stack->multi, ev);
 }
 
-multi (event_t * ev, char message[70] , stack_t * st, int status, int value)
+void multi (event_t * ev, char message[70] , stack_t * st, int status, int value)
 {
     if(ev->callback != NULL)
                 {
@@ -205,10 +205,7 @@ void stack_Event (void * listener, stack_t * stack, enum status_en status, int v
     if(status == 2)
     {
         user_t * user = (user_t *)listener;
-        if(value)
-            sprintf(message, "Event DUAL: User %s. Stack %i is FULL.\n", user->users, stack->number);
-        else
-            sprintf(message, "Event DUAL: User %s. Stack %i is EMPTY.\n", user->users, stack->number);
+        sprintf(message, "User %s gets that it is the EVENT\n", user->users);
         printf(message);
     }
 }
