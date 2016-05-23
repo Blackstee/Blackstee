@@ -1,0 +1,22 @@
+# depslib dependency file v1.0
+1463966925 source:d:\ÎÏ\äç\nlp\nlp\functions.c
+	<stdlib.h>
+	<stdio.h>
+	"functions.h"
+	"list.h"
+	<string.h>
+
+1463965666 d:\ÎÏ\äç\nlp\nlp\functions.h
+
+1463960557 d:\ÎÏ\äç\nlp\nlp\list.h
+	<stdlib.h>
+
+1463960513 source:d:\ÎÏ\äç\nlp\nlp\list.c
+	<stdlib.h>
+	"list.h"
+
+1463966951 source:d:\ÎÏ\äç\nlp\nlp\main.c
+	<stdio.h>
+	<stdlib.h>
+	"functions.h"
+
