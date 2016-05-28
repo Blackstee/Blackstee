@@ -3,6 +3,12 @@
 
 #define CONNECT_OK 0
 
+/*SOCKET socket_new(void);
+void con_to_serv (SOCKET recvSocket, SOCKADDR_IN recvSockAddr);
+void send_request1(SOCKET recvSocket, const char * host_name);
+void rec_answer (SOCKET recvSocket, char * buffer);
+SOCKADDR_IN get_Addr(char * ip);
+*//*
 typedef struct socket_s socket_t;
 
 typedef enum socket_status_s {
@@ -26,5 +32,9 @@ int socket_read(socket_t * sock, char * recvBuff, int recvSize);
 int socket_write(socket_t * conn, const char * msg, int msgSize);
 int socket_write_string(socket_t * conn, const char * msg);
 void socket_close(socket_t * conn);
-
+void con_to_serv (SOCKET recvSocket, SOCKADDR_IN recvSockAddr);
+ SOCKET socket_new(void);
+ void send_request1(SOCKET recvSocket, const char * host_name);
+ void rec_answer (SOCKET recvSocket, char * buffer);
+ SOCKADDR_IN get_Addr(char * ip);*/
 #endif // socket_H_INCLUDED

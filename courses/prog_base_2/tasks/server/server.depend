@@ -53,3 +53,57 @@
 	<winsock2.h>
 	"socket.h"
 
+1460894953 source:d:\repositories blackstee\blackstee\courses\prog_base_2\tasks\server\cjson.c
+	<string.h>
+	<stdio.h>
+	<math.h>
+	<stdlib.h>
+	<float.h>
+	<limits.h>
+	<ctype.h>
+	"cJSON.h"
+
+1460894956 d:\repositories blackstee\blackstee\courses\prog_base_2\tasks\server\cjson.h
+
+1460901560 source:d:\repositories blackstee\blackstee\courses\prog_base_2\tasks\server\http.c
+	<stddef.h>
+	"http.h"
+
+1460896678 d:\repositories blackstee\blackstee\courses\prog_base_2\tasks\server\http.h
+
+1460917450 source:d:\repositories blackstee\blackstee\courses\prog_base_2\tasks\server\main.c
+	<stdio.h>
+	<stdlib.h>
+	"server.h"
+	"http.h"
+	"musicians.h"
+	"socket.h"
+
+1460942605 d:\repositories blackstee\blackstee\courses\prog_base_2\tasks\server\server.h
+	"http.h"
+	"musicians.h"
+	"socket.h"
+
+1460942605 d:\repositories blackstee\blackstee\courses\prog_base_2\tasks\server\musicians.h
+
+1460895045 d:\repositories blackstee\blackstee\courses\prog_base_2\tasks\server\socket.h
+
+1460945288 source:d:\repositories blackstee\blackstee\courses\prog_base_2\tasks\server\musicians.c
+	<stdlib.h>
+	<stdio.h>
+	"cJSON.h"
+	"musicians.h"
+
+1460945288 source:d:\repositories blackstee\blackstee\courses\prog_base_2\tasks\server\server.c
+	<stdio.h>
+	<stdlib.h>
+	<windows.h>
+	"server.h"
+	"http.h"
+	"musicians.h"
+	"socket.h"
+
+1460895047 source:d:\repositories blackstee\blackstee\courses\prog_base_2\tasks\server\socket.c
+	<winsock2.h>
+	"socket.h"
+
