@@ -9,10 +9,44 @@
 #include "list.h"
 #include "db_manager.h"
 #include "musicians.h"
+#include "fs.h"
 
 #pragma comment(lib,"ws2_32.lib") //Winsock Library
 
 #define PORT 5000
+//===========================errors====================================
+error_t * error_t_new (void)
+{
+    error_t * err = malloc (sizeof(struct error_s));
+    err->status = "Ok";
+    err->error = "No Error";
+    return err;
+}
+
+void error_t_free (error_t * err)
+{
+    free (err);
+}
+
+void error_t_add_err (error_t * err, int status1, char * error1)
+{
+    err->status = status1;
+    err->error = error1;
+    return err;
+}
+
+void server_sendJson(socket_t * socket, error_t * err){
+	char buffer[1024];
+
+	char * Error = error_toJSON(&err);
+	sprintf(buffer,
+		"HTTP/1.1 200 OK\n"
+		"Content-Type: application/json\n"
+		"Content-Length: %d\n"
+		"Connection: keep-alive\r\n\r\n"
+		"%s", strlen(Error), Error);
+	socket_write_string(socket, buffer);
+}
 
 //==========================client===================================
 
@@ -181,7 +215,7 @@ void server_notFound(socket_t * client)
 }
 
 
-//==================================datbase==============
+//==================================database==============
 /*
 void server_database(socket_t * client)
 {
@@ -197,3 +231,50 @@ void server_database(socket_t * client)
     musician_printList(musicianList, count);
     db_free(db);
 }*/
+
+//================================files=========================================
+cons_t * cons_t_new (void)
+{
+    cons_t * cons = malloc (sizeof(cons_t));
+    cons->vowels = 0;
+    cons->consonants = 0;
+    return cons;
+}
+
+void cons_t_free (cons_t * cons)
+{
+    free (cons);
+}
+void server_files (socket_t * client, http_request_t * req, const char * pathBuf)
+{
+    char buffer [1024];
+    char file_name [20];
+    strcpy (file_name, &pathBuf[7]);
+    if (file_exists(file_name))
+    {
+        text_t * text = text_t_new();
+        sentence_t * sentence = sentence_t_new();
+        file_read (file_name, text, sentence);
+        cons_t * result = fprint (text);
+        text_free(text);
+        const char * res = cons_toJSON(result);
+        cons_t_free (result);
+        sprintf(buffer,
+		"HTTP/1.1 200 OK\n"
+		"Content-Type: application/json\n"
+		"Content-Length: %d\n"
+		"Connection: keep-alive\r\n\r\n"
+		"%s", strlen(res), res);
+	socket_write_string(client, buffer);
+        free (res);
+    }
+    else
+    {
+        error_t * err = error_t_new();
+        error_t_add_err(err, NULL, "Wrong file");
+        server_sendJson(client, &err);
+    }
+        //server_error_file (client);
+        //server_notFound(client);
+}
+

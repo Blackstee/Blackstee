@@ -63,32 +63,17 @@ int main()
                else
                  if (strcmp(request.uri, "/external") == 0)
                     server_external(client);
-            /*    if (strstr(request.uri, "/musicians/") == request.uri)
-                      server_musicianById(client, &request, request.uri);
-                   else
-                 */
                  else
                         if (strcmp(request.uri, "/database") == 0)
                        server_homepage(client);
                        // server_database (client);
+                       else
+                        if
+                        (strstr(request.uri, "/files/") == request.uri)
+                           server_files(client, &request, request.uri);
                  else  server_notFound(client);
     }
     socket_free(server_sock);
     lib_free();
     return 0;
-   /* const char * testDir1 = "";
-    const char * testFile1 = "";
-    const char * testFile2 = "";
-    printf("Create file: %i\n", file_create(testFile2));
-    printf("Press ENTER...\n");
-    getc(stdin);
-    printf("Remove file: %i\n", file_remove(testFile2));
-    printf("Dir exists: %i\n", dir_exists(testDir1));
-    printf("Num of files: %i\n", dir_printFiles(testDir1));
-    printf("Size: %i\n", file_getSize(testFile1));
-    char buff[20];
-    time_t now = file_getCreateTime(testFile1);
-    strftime(buff, 20, "%Y-%m-%d %H:%M:%S", localtime(&now));
-    printf("Created: %s\n", buff);
-    return 0;*/
 }

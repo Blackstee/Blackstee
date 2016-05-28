@@ -22,3 +22,35 @@ info_toJSON(const info_t * self)
 	cJSON_Delete(jInfo);
     return jsonString;
 }
+
+static cJSON * cons_serializeJSON(const cons_t *self)
+{
+    cJSON * jCons = cJSON_CreateObject();
+    cJSON_AddItemToObject(jCons, "Vowels", cJSON_CreateNumber(self->vowels));
+    cJSON_AddItemToObject(jCons, "Consonants", cJSON_CreateNumber(self->consonants));
+	return jCons;
+}
+
+const char *
+cons_toJSON(const cons_t * self)
+{
+    cJSON * jCons = cons_serializeJSON(self);
+	const char * jsonString = cJSON_Print(jCons);
+	cJSON_Delete(jCons);
+    return jsonString;
+}
+
+static cJSON * _error_serializeJSON(const error_t * self) {
+    cJSON * jError = cJSON_CreateObject();
+    cJSON_AddItemToObject(jError, "Number of requests", cJSON_CreateNumber(self->status));
+	cJSON_AddItemToObject(jError, "Current existence of problem", cJSON_CreateString(self->error));
+	return jError;
+}
+
+const char *
+error_toJSON(const error_t * self) {
+    cJSON * jError = _error_serializeJSON(self);
+	const char * jsonString = cJSON_Print(jError);
+	cJSON_Delete(jError);
+    return jsonString;
+}

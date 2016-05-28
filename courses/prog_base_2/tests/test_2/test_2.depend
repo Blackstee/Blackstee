@@ -33,7 +33,7 @@
 	<sqlite3.h>
 	"musicians.h"
 
-1464435598 source:d:\力\test_2\test_2\fs.c
+1464441884 source:d:\力\test_2\test_2\fs.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -43,8 +43,11 @@
 	<dirent.h>
 	<windows.h>
 	"fs.h"
+	"list.h"
 
-1464388637 d:\力\test_2\test_2\fs.h
+1464441502 d:\力\test_2\test_2\fs.h
+	"server.h"
+	"info.h"
 
 1464385895 source:d:\力\test_2\test_2\http.c
 	<stddef.h>
@@ -52,13 +55,13 @@
 
 1464385937 d:\力\test_2\test_2\http.h
 
-1464425914 source:d:\力\test_2\test_2\info.c
+1464442498 source:d:\力\test_2\test_2\info.c
 	<stdlib.h>
 	<stdio.h>
 	"cJSON.h"
 	"info.h"
 
-1464436081 source:d:\力\test_2\test_2\main.c
+1464441884 source:d:\力\test_2\test_2\main.c
 	<stdio.h>
 	<stdlib.h>
 	<time.h>
@@ -83,7 +86,7 @@
 	<winsock2.h>
 	"socket.h"
 
-1464435668 source:d:\力\test_2\test_2\server.c
+1464441628 source:d:\力\test_2\test_2\server.c
 	<stdio.h>
 	<stdlib.h>
 	<windows.h>
@@ -94,12 +97,13 @@
 	"list.h"
 	"db_manager.h"
 	"musicians.h"
+	"fs.h"
 
 1464432901 d:\力\test_2\test_2\server.h
 	"http.h"
 	"socket.h"
 
-1464425847 d:\力\test_2\test_2\info.h
+1464442499 d:\力\test_2\test_2\info.h
 
 1464433210 source:d:\力\test_2\test_2\musicians.c
 	<stdlib.h>

@@ -20,3 +20,24 @@
 	<stdlib.h>
 	"functions.h"
 
+1463966925 source:d:\repositories blackstee\blackstee\courses\prog_base_2\tasks\nlp\functions.c
+	<stdlib.h>
+	<stdio.h>
+	"functions.h"
+	"list.h"
+	<string.h>
+
+1463965666 d:\repositories blackstee\blackstee\courses\prog_base_2\tasks\nlp\functions.h
+
+1463960557 d:\repositories blackstee\blackstee\courses\prog_base_2\tasks\nlp\list.h
+	<stdlib.h>
+
+1463960513 source:d:\repositories blackstee\blackstee\courses\prog_base_2\tasks\nlp\list.c
+	<stdlib.h>
+	"list.h"
+
+1463966951 source:d:\repositories blackstee\blackstee\courses\prog_base_2\tasks\nlp\main.c
+	<stdio.h>
+	<stdlib.h>
+	"functions.h"
+
