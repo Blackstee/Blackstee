@@ -52,6 +52,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="http.h" />
+		<Unit filename="info.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="info.h" />
 		<Unit filename="list.c">
 			<Option compilerVar="CC" />
 		</Unit>
@@ -59,6 +63,14 @@
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="musicians.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="musicians.h" />
+		<Unit filename="server.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="server.h" />
 		<Unit filename="socket.c">
 			<Option compilerVar="CC" />
 		</Unit>

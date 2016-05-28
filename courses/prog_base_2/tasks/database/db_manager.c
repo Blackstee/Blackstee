@@ -6,6 +6,7 @@
 
 #include "db_manager.h"
 #include "musicians.h"
+#include "server.h"
 
 struct db_s
 {

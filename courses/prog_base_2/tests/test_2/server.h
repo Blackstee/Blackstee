@@ -14,6 +14,8 @@ void server_info (socket_t * client);
 void server_notFound(socket_t * client);
 
 //=====================external=============
-void server_external(socket_t * client);
+//void server_external(socket_t * client);
 
+//=====================database=============
+void server_database(socket_t * client);
 #endif // SERVER_H_INCLUDED

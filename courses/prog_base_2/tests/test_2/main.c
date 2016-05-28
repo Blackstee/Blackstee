@@ -18,6 +18,7 @@
 #include "http.h"
 #include "list.h"
 #include "socket.h"
+#include "server.h"
 
 
 int main()
@@ -60,12 +61,17 @@ int main()
                if (strcmp(request.uri, "/info") == 0 || strcmp(request.uri, "/info/") == 0)
                   server_info (client);
                else
-                 if (strcmp(request.uri, "/external" == 0))
-                   server_external(client);
-               /*    if (strstr(request.uri, "/musicians/") == request.uri)
+                 if (strcmp(request.uri, "/external") == 0)
+                    server_external(client);
+            /*    if (strstr(request.uri, "/musicians/") == request.uri)
                       server_musicianById(client, &request, request.uri);
                    else
-                 */    server_notFound(client);
+                 */
+                 else
+                        if (strcmp(request.uri, "/database") == 0)
+                       server_homepage(client);
+                       // server_database (client);
+                 else  server_notFound(client);
     }
     socket_free(server_sock);
     lib_free();

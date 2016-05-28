@@ -7,32 +7,14 @@
 #include "info.h"
 #include "socket.h"
 #include "list.h"
+#include "db_manager.h"
+#include "musicians.h"
+
 #pragma comment(lib,"ws2_32.lib") //Winsock Library
-#define NO_FLAGS_SET 0
-#define PORT 80
-#define MAXBUFLEN 20480 // How much is printed out to the screen
 
+#define PORT 5000
 
- SOCKET sockett_new(void)
- {
-     SOCKET recvSocket  = socket(AF_INET , SOCK_STREAM,  IPPROTO_TCP);
-     if( recvSocket == INVALID_SOCKET)
-    {
-        printf("Could not create socket : %d" , WSAGetLastError());
-    }
-    printf("Socket created.\n");
-    return recvSocket;
-}
-
-void con_to_serv (SOCKET recvSocket, SOCKADDR_IN recvSockAddr)
-{
- if(connect(recvSocket,(SOCKADDR*)&recvSockAddr,sizeof(SOCKADDR_IN)) == SOCKET_ERROR)
-    {
-        printf("ERROR: socket could not connect\r\n");
-        closesocket(recvSocket);
-        WSACleanup();
-    }
-}
+//==========================client===================================
 
 void send_request1(SOCKET recvSocket, const char * host_name)
 {
@@ -43,7 +25,7 @@ void send_request1(SOCKET recvSocket, const char * host_name)
 
 void rec_answer (SOCKET recvSocket, char * buffer)
 {
-    int numrcv = recv(recvSocket, buffer, MAXBUFLEN, NO_FLAGS_SET);
+    int numrcv = recv(recvSocket, buffer, 1000, 0);
 	if (numrcv == SOCKET_ERROR)
 	{
 		printf("ERROR: recvfrom unsuccessful\r\n");
@@ -58,66 +40,79 @@ void rec_answer (SOCKET recvSocket, char * buffer)
 	}
 }
 
-
-
-SOCKADDR_IN get_Addr(char * ip)
+static SOCKET Socket_create()
 {
-    SOCKADDR_IN recvSockAddr;
-    memset(&recvSockAddr, 0, sizeof(recvSockAddr));
-    recvSockAddr.sin_port=htons(PORT); // specify the port portion of the address
-    recvSockAddr.sin_family=AF_INET; // specify the address family as Internet
-    recvSockAddr.sin_addr.s_addr= inet_addr(ip); // specify ip address
-    return recvSockAddr;
+    SOCKET Socket;
+    puts("Creating socket...");
+    if((Socket = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP)) == INVALID_SOCKET)
+    {
+        printf("Could not create socket : %d", WSAGetLastError());
+        WSACleanup();
+        return 1;
+    }
+    puts("Socket created.");
+    return Socket;
 }
 
-int get_data ()
+char * getString(SOCKET Socket, char* reply)
 {
-    WSADATA Data;
-    SOCKADDR_IN recvSockAddr;
-    SOCKET recvSocket;
-    int status;
-    struct hostent * remoteHost;
-    char * ip;
-    const char * host_name = "pb-homework.appspot.com";
-    char buffer[MAXBUFLEN];
-    memset(buffer,0,MAXBUFLEN);
+    char stringJSON[40];
+    char* str;
+    reply = strstr(reply, "Content-Length:");
+    str = strtok(reply, "\n");
+    str = strtok(NULL, "\n");
+    str = strtok(NULL, "\n");
+    strcpy(stringJSON, str);
+    stringJSON[strlen(stringJSON)] = '\0';
+    return stringJSON;
+}
 
-    // Initialize Windows Socket DLL
-    printf ("Initializing Socket");
-    status = WSAStartup(MAKEWORD(2, 2), &Data);
-    if(status != 0)
+char * get_data ()
+{
+    SOCKET Socket;
+    struct sockaddr_in recvSockAddr;
+    struct hostent * rHost;
+    char* ip;
+   const char * host_name = "pb-homework.appspot.com";
+    char buffer[1000];
+    memset(buffer,0,1000);
+    Socket = Socket_create();
+    rHost = gethostbyname(host_name);
+    ip = inet_ntoa(*(struct in_addr *)*rHost->h_addr_list);
+	printf("IP address is: %s\n", ip);
+    memset(&recvSockAddr, 0, sizeof(recvSockAddr));
+    recvSockAddr.sin_addr.s_addr = inet_addr(ip);
+    recvSockAddr.sin_family = AF_INET;
+    recvSockAddr.sin_port = htons(80);
+    if(connect(Socket, (struct sockaddr *)&recvSockAddr, sizeof(recvSockAddr)) == SOCKET_ERROR)
     {
-        printf("ERROR: WSAStartup unsuccessful\r\n");
-        return 0;
+        puts("Socket connect error");
+        closesocket(Socket);
+        WSACleanup();
+        return;
     }
-    printf ("Initialized");
-
-	// Get IP address from host name
-	remoteHost = gethostbyname(host_name);
-	ip = inet_ntoa(*(struct in_addr *)*remoteHost->h_addr_list);
-	printf("IP address is: %s.\n", ip);
-	recvSockAddr = get_Addr (ip);
-    //Creating new socket
-    recvSocket = sockett_new ();
-    //Connecting
-    con_to_serv (recvSocket, recvSockAddr);
-
-    //Sending request 1
-    send_request1(recvSocket, host_name);
-
+   send_request1(Socket, host_name);
     //Receiving the answer
-    rec_answer (recvSocket, buffer);
+    rec_answer (Socket, buffer);
+    puts(buffer);
+    char stringJSON[100];
+    strcpy(stringJSON, getString(Socket, buffer));
+    return stringJSON;
+}
 
-    //Looking for answer
-    printf ("\n The result is: %s\n", buffer);
-    //Closing socket
-    closesocket(recvSocket);
+//=====================================external===================================
 
-    WSACleanup();
-
-    getchar();
-
-    return 0;
+void server_external(socket_t * client)
+{
+     char buffer [1024];
+     const char * external = get_data ();
+     sprintf(buffer,
+		"HTTP/1.1 200 OK\n"
+		"Content-Type: application/json\n"
+		"Content-Length: %d\n"
+		"Connection: keep-alive\r\n\r\n"
+		"%s", strlen(external), external);
+	socket_write_string(client, buffer);
 }
 
 //=======================================HOMEPAGE=================================
@@ -185,19 +180,20 @@ void server_notFound(socket_t * client)
     socket_close(client);
 }
 
-//=====================================external===================================
 
-void server_external(socket_t * client)
+//==================================datbase==============
+/*
+void server_database(socket_t * client)
 {
-    int n = get_data();
-    printf ("%i", n);
-     /*char buffer [1024];
-     const char * external = get_data ();
-     sprintf(buffer,
-		"HTTP/1.1 200 OK\n"
-		"Content-Type: application/json\n"
-		"Content-Length: %d\n"
-		"Connection: keep-alive\r\n\r\n"
-		"%s", strlen(external), external);
-	socket_write_string(client, buffer);*/
-}
+    const char * dbFile = "data.db";
+    musician_t musicianList[50];
+    db_t * db = db_new(dbFile);
+    sqlite3_stmt * stmt = NULL;
+    int count  = db_countMusicians(db);
+    for (int i = 0; i < count; i++)
+    {
+        _fillMusician(stmt, &musicianList[count]);
+    }
+    musician_printList(musicianList, count);
+    db_free(db);
+}*/

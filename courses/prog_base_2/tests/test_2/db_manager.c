@@ -6,9 +6,9 @@
 
 #include "db_manager.h"
 
-//#include "musicians.h"
+#include "musicians.h"
 
-/*struct db_s
+struct db_s
 {
     sqlite3 * db;
 };
@@ -122,7 +122,7 @@ int db_countMusicians(db_t * self)
     return count;
 }
 
-static void _fillMusician(sqlite3_stmt * stmt, musician_t * mus)
+void _fillMusician(sqlite3_stmt * stmt, musician_t * mus)
 {
     int number = sqlite3_column_int(stmt, 0);
     const unsigned char * name = sqlite3_column_text(stmt, 1);
@@ -172,4 +172,4 @@ int db_getMusiciansTask(db_t * self, int K, int P, musician_t * arr, int arrMax)
     sqlite3_finalize(stmt);
     return count;
 }
-*/
+

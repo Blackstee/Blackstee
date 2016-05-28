@@ -78,7 +78,7 @@ time_t file_getCreateTime(const char * filename) {
 */
 int file_create(const char * filename) {
     FILE * fp;
-    int success = NULL != (fp = fopen(filename, "ab+"));
+    int success = NULL != (fp = fopen(filename, "file.h"));
     if (!success) {
         return 0;
     }

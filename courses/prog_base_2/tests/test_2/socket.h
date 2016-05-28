@@ -26,9 +26,4 @@ int socket_read(socket_t * sock, char * recvBuff, int recvSize);
 int socket_write(socket_t * conn, const char * msg, int msgSize);
 int socket_write_string(socket_t * conn, const char * msg);
 void socket_close(socket_t * conn);
-/*SOCKADDR_IN get_Addr(char * ip);
-void rec_answer (SOCKET recvSocket, char * buffer);
-void send_request1(SOCKET recvSocket, const char * host_name);
-void con_to_serv (SOCKET recvSocket, SOCKADDR_IN recvSockAddr);
-SOCKET sockett_new(void);
-*/#endif // socket_H_INCLUDED
+#endif // socket_H_INCLUDED
