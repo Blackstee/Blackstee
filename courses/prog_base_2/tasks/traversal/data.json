@@ -1,0 +1,48 @@
+{
+	"__data": {
+		"name": "Petya",
+		"surname": "Petrov",
+		"year": 2009,
+		"rating": 4.6
+	},
+	"__left": {
+		"__data": {
+			"name": "Gadya",
+		    "surname": "Petrovich",
+		    "year": 2005,
+		    "rating": 4.9
+		},
+		"__left": {
+			"__data": {
+				"name": "Kotik",
+                "surname": "Meow",
+		        "year": 2016,
+		        "rating": 5.0
+			}
+		},
+		"__right": {
+			"__data": {
+				"name": "Dog",
+		        "surname": "Sobakevich",
+		        "year": 2004,
+		        "rating": 5.0
+			}
+		}
+	},
+	"__right": {
+		"__data": {
+			"name": "Michael",
+            "surname": "Jackson",
+            "year": 1990,
+            "rating": 4.9
+        },
+		"__left": {
+			"__data": {
+				"name": "Freddie",
+		        "surname": "Mercury",
+		        "year": 1985,
+		        "rating": 4.9
+			}
+		}
+	}
+}
