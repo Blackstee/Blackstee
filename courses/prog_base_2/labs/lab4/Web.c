@@ -51,8 +51,8 @@ void server_json_homepage(socket_t * client)
         "<head>"
             "<title>Musician's server</title></head>"
         "<body>"
-            "<h1>Hello! It's a homepage</h1>"
-            "<div><a href='/api/musicians'>All musicians</a></div>"
+            "<h1 align = \"center\"><i>Hello! It's a homepage</i></h1>"
+            "<h2 align = \"center\"><a href='/api/musicians'><i>All musicians</i></a></h2>"
         "</body>";
     sprintf(homeBuf,
         "HTTP/1.1 200 OK\n"
@@ -71,8 +71,8 @@ void server_html_homepage(socket_t * client)
         "<head>"
             "<title>Musician's server</title></head>"
         "<body>"
-            "<h1>Hello! It's a homepage</h1>"
-            "<div><a href='/musicians'>All musicians</a></div>"
+            "<h1 align = \"center\"><i>Hello! It's a homepage</i></h1>"
+            "<h2 align = \"center\"><a href='/musicians'><i>All musicians</i></a></h2>"
         "</body>";
     sprintf(homeBuf,
         "HTTP/1.1 200 OK\n"
