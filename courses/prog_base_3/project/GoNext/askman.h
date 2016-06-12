@@ -1,6 +1,8 @@
 #ifndef ASKMAN_H_INCLUDED
 #define ASKMAN_H_INCLUDED
 
-void askman(RenderWindow &window);
+#include "object.h"
+
+object_t * askman(RenderWindow &window, object_t * object);
 
 #endif // ASKMAN_H_INCLUDED

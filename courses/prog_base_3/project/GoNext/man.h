@@ -1,6 +1,8 @@
 #ifndef MAN_H_INCLUDED
 #define MAN_H_INCLUDED
 
-void man(RenderWindow &window);
+#include "object.h"
+
+object_t * man(RenderWindow &window, object_t * object);
 
 #endif // MAN_H_INCLUDED

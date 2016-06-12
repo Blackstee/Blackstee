@@ -3,13 +3,13 @@
 
  using namespace sf;
 
-#include "menu.h"
-#include "choice.h"
-#include "startgame.h"
+ #include "startgame.h"
  #include "askman.h"
  #include "dragon.h"
+ #include "pause.h"
+ #include "object.h"
 
-void startgame (RenderWindow &window, int heroNum)
+object_t * startgame (RenderWindow &window, object_t * object)
 {
     Texture mapBackground;
     mapBackground.loadFromFile ("images/door.png");
@@ -38,18 +38,29 @@ void startgame (RenderWindow &window, int heroNum)
 	Sprite pro;
 	pro.setTexture(pr);
 	pro.setPosition(920, 0);
+	Image keyobject;
+	keyobject.loadFromFile("images/keyincase.png");
+	keyobject.createMaskFromColor(Color(24, 23, 23));
+	Texture keyo;
+	keyo.loadFromImage(keyobject);
+	Sprite keyobjj;
+	keyobjj.setTexture(keyo);
+	keyobjj.setPosition(150, 780);
 	Font font;
     font.loadFromFile("COLONNA.ttf");
     Text text1("", font, 50);
     text1.setString("CLICK!");
     text1.setPosition(1120,30);
     Text text2("", font, 70);
-    text2.setString("MENU");
+    text2.setString("PAUSE");
     text2.setPosition(60,30);
     float CurrentFrame = 0;
     Clock clock;
 	int text = 0;
 	int choice = -1;
+	int exit = 0;
+    int suree  = 0;
+	int paus = 0;
 while (window.isOpen())
 	{
         pro.setColor(Color(221,235,214));
@@ -90,13 +101,33 @@ while (window.isOpen())
         if(Mouse::isButtonPressed(Mouse::Left))
         {
             if (choice == 1)
-                askman(window);
+            {
+                object_t * object1 = askman(window, object);
+                object_t_copy (object, object1);
+            }
             if (choice == 2)
-                dragon (window);
+            {
+                object_t * object1 = dragon(window, object);
+                object_t_copy (object, object1);
+            }
             if (choice == 3)
-                return;
+                {
+                   suree = 1;
+                }
         }
-
+        if (suree == 1)
+        {
+           paus = pause(window);
+        }
+        if (paus == 2 || paus == 3)
+        {
+            object_t_write_plan(object, 1);
+            return object;
+        }
+        if (paus == 1)
+            suree = 0;
+        if (object_t_get_plan(object) == 1)
+            return object;
 		window.clear();
 		window.draw(mapBg);
 		window.draw(re);
@@ -104,6 +135,8 @@ while (window.isOpen())
 		if (text == 1)
 		window.draw(text1);
 		window.draw(text2);
+		if (object_t_get_ispicked(object))
+            window.draw (keyobjj);
 		window.display();
 	}
 }

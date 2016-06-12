@@ -12,10 +12,8 @@ void menu(RenderWindow &window)
 	 Texture menuText2, menuBackground;
 	 menuBackground.loadFromFile("images/menuBG.png");
 	 Sprite menuBg(menuBackground);
-	 bool isMenu = 1;
-	 int menuNum = 0;
+     int menuNum = 0;
 	 menuBg.setPosition(0,0);
-
 	 Font font;
 	 font.loadFromFile("COLONNA.ttf");
 	 Text text1("", font, 50);

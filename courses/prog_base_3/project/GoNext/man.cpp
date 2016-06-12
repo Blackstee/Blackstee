@@ -3,12 +3,11 @@
 
  using namespace sf;
 
- #include "menu.h"
- #include "choice.h"
- #include "startgame.h"
  #include "man.h"
+ #include "pause.h"
+ #include "object.h"
 
-void man(RenderWindow &window)
+object_t * man(RenderWindow &window, object_t * object)
 {
    Texture mapBackground;
     mapBackground.loadFromFile ("images/open.png");
@@ -21,6 +20,14 @@ void man(RenderWindow &window)
 	Sprite pro;
 	pro.setTexture(pr);
 	pro.setPosition(800,60);
+	Image keyobject;
+	keyobject.loadFromFile("images/keyincase.png");
+	keyobject.createMaskFromColor(Color(24, 23, 23));
+	Texture keyo;
+	keyo.loadFromImage(keyobject);
+	Sprite keyobjj;
+	keyobjj.setTexture(keyo);
+	keyobjj.setPosition(150, 780);
 	Font font;
     font.loadFromFile("COLONNA.ttf");
     Text text1("", font, 50);
@@ -35,13 +42,16 @@ void man(RenderWindow &window)
 	lef.setTexture(l);
 	lef.setPosition(70,430);
     Text text2("", font, 70);
-    text2.setString("MENU");
+    text2.setString("PAUSE");
     text2.setPosition(60,30);
     float CurrentFrame = 0;
     Clock clock;
 	int text = 0;
 	int choice = -1;
 	int exit = 0;
+	int suree = 0;
+	int paus = 0;
+	int chosen = 0;
 while (window.isOpen())
 	{
         pro.setColor(Color(221,235,214));
@@ -74,20 +84,52 @@ while (window.isOpen())
             text2.setColor(Color(255, 255, 255, 255));
             choice = 3;
         }
+        if(IntRect(150, 780,250, 100).contains(Mouse::getPosition(window)))
+        {
+            keyobjj.setColor(Color(255, 255, 255, 255));
+            lef.setColor(Color(255, 228, 176));
+            choice = 4;
+        }
          if(Mouse::isButtonPressed(Mouse::Left))
         {
             if (choice == 2)
-                exit = 1;
-            if (choice == 3)
-                return;
+            {
+                object_t_write_plan(object, 0);
+                return object;
+            }
+           if (choice == 3)
+                {
+                   suree = 1;
+                }
+            if (choice == 4 && object_t_get_ispicked(object))
+            {
+                chosen = 1;
+            }
+            if (choice == 2 && chosen == 1)
+            {
+                keyobjj.setPosition (800, 60);
+            }
         }
-        if (exit == 1)
-            return;
+        if (suree == 1)
+        {
+           paus = pause(window);
+        }
+        if (paus == 2 || paus == 3)
+        {
+           object_t_write_plan(object, 1);
+	       return object;
+        }
+        if (paus == 1)
+            suree = 0;
+        if (object_t_get_plan(object) == 1)
+            return object;
 		window.clear();
 		window.draw(mapBg);
 		window.draw(pro);
 		window.draw(lef);
 		window.draw(text2);
+		if (object_t_get_ispicked(object))
+            window.draw (keyobjj);
 		window.display();
 	}
 }

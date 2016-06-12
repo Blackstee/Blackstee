@@ -6,7 +6,7 @@
 #include "menu.h"
 #include "choice.h"
 #include "startgame.h"
-
+ #include "object.h"
 
 void choice (RenderWindow &window)
 {
@@ -55,6 +55,8 @@ void choice (RenderWindow &window)
 	 int heroNum = 1;
 	 int heroNumst = 1;
 	 int exit = 0;
+	 object_t * object = object_t_new ("book", false);
+	 object_t * object1 = object_t_new ("book", false);
 	 while(window.isOpen())
 	 {
 		text1.setColor(Color(0,0,0));
@@ -95,7 +97,9 @@ void choice (RenderWindow &window)
 			if(menuNum == 2)
 			{
 				puts ("choice num 2");
-				startgame(window, heroNumst);
+				object_t_write_plan (object, 0);
+				object_t * object1 = startgame(window, object);
+				object_t_copy (object, object1);
 			}
 			if(menuNum == 3)
 			{
