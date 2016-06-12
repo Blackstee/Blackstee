@@ -8,7 +8,7 @@
 #include "startgame.h"
 
 
-int choice (RenderWindow &window)
+void choice (RenderWindow &window)
 {
      Texture choiceBackground;
 	 choiceBackground.loadFromFile("images/choiceBG.png");
@@ -54,7 +54,8 @@ int choice (RenderWindow &window)
 	 text11.setPosition(930, 600);
 	 int heroNum = 1;
 	 int heroNumst = 1;
-	 while(isMenu)
+	 int exit = 0;
+	 while(window.isOpen())
 	 {
 		text1.setColor(Color(0,0,0));
 		text2.setColor(Color(0,0,0));
@@ -89,26 +90,21 @@ int choice (RenderWindow &window)
 		{
 			if (menuNum == 1)
             {
-                isMenu = false;
                 puts ("choice num 1");
             }
 			if(menuNum == 2)
 			{
-				isMenu = false;
 				puts ("choice num 2");
-				//gamemap(window, heroNum);
 				startgame(window, heroNumst);
 			}
 			if(menuNum == 3)
 			{
-			    isMenu = false;
 			    puts ("choice num 3");
-				return 1;//menu (window);
+				exit = 1;
 			}
-			if (heroNum >= 1 && heroNum <= 8)
-                heroNumst = heroNum;
-
 		}
+		if (exit == 1)
+            return;
 		 window.draw(choiceBg);
 		 window.draw(text1);
 		 window.draw(text2);
@@ -125,5 +121,4 @@ int choice (RenderWindow &window)
 		 puts ("choice not made");
 	 }
 	 puts ("end of choice");
-	 return 0;
 }

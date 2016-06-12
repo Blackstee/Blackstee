@@ -76,10 +76,10 @@ void gamemap (RenderWindow &window, int choiceNum)
 
  int main()
  {
-	 RenderWindow window(VideoMode(1580,1100),"GoNext", Style::Default);
+	 RenderWindow window(VideoMode(1580,1100),"GoNext", Style::Fullscreen);
 	 window.setPosition(Vector2i(0,0));
 	 menu(window);
-	 puts ("int main");
+	/* puts ("int main");
 	  while (window.isOpen())
     {
         sf::Event event;
@@ -88,5 +88,5 @@ void gamemap (RenderWindow &window, int choiceNum)
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-    }
+    }*/
  }

@@ -34,7 +34,7 @@ void menu(RenderWindow &window)
      music.openFromFile("sounds/joker.ogg");
      music.play();
 
-	 while(isMenu)
+	 while(window.isOpen())
 	 {
 		text1.setColor(Color(0,0,0));
 		text2.setColor(Color(0,0,0));
@@ -69,8 +69,7 @@ void menu(RenderWindow &window)
 		{
 			if (menuNum == 1)
             {
-                isMenu = false;
-                isMenu = choice (window) ;
+                choice (window) ;
             }
 			/*if(menuNum == 2)
 			{
@@ -81,7 +80,6 @@ void menu(RenderWindow &window)
 			}*/
 			if(menuNum == 4)
 			{
-			    isMenu = false;
 				window.close();
 			}
 		}
