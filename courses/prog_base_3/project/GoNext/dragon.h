@@ -3,6 +3,6 @@
 
 #include "object.h"
 
-object_t * dragon(RenderWindow &window, object_t * object);
+object_t * dragon(RenderWindow &window, object_t * object, int volume);
 
 #endif // DRAGON_H_INCLUDED

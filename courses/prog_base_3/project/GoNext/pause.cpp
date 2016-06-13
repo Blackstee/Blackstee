@@ -5,7 +5,7 @@
 
 #include "pause.h"
 
-int pause(RenderWindow &window)
+int pause(RenderWindow &window, int volume)
 {
    Texture mapBackground;
     mapBackground.loadFromFile ("images/mapBG.png");
@@ -32,12 +32,27 @@ int pause(RenderWindow &window)
     float CurrentFrame = 0;
     Clock clock;
 	int choice = -1;
+	SoundBuffer buf1, buf2;
+	 buf1.loadFromFile("sounds/step.ogg");
+	 buf2.loadFromFile("sounds/step2.ogg");
+	 Sound step1, step2;
+	 step1.setBuffer(buf1);
+     step2.setBuffer(buf2);
+     sf::Music music;
+     music.openFromFile("sounds/pause.ogg");
+     int musiccheck = 0;
 while (window.isOpen())
 	{
         choice = 0;
         text3.setColor(Color(0,0,0));
         text4.setColor(Color(0,0,0));
         text5.setColor(Color(0,0,0));
+        if (musiccheck == 0)
+            {
+                musiccheck = 1;
+                music.setVolume(volume);
+                music.play();
+            }
         float time = clock.getElapsedTime().asMicroseconds();
         clock.restart();
         time = time/800;
@@ -67,14 +82,17 @@ while (window.isOpen())
         {
             if (choice == 1)
             {
+                music.stop();
                 return 1;
             }
             if (choice == 2)
             {
+                music.stop();
                 return 2;
             }
             if (choice == 3)
             {
+                music.stop();
                 return 3;
             }
         }

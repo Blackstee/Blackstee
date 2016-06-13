@@ -6,6 +6,12 @@
  #include "menu.h"
  #include "choice.h"
  #include "startgame.h"
+ #include "settings.h"
+
+void step(Sound &step)
+ {
+	step.play();
+ }
 
 void menu(RenderWindow &window)
  {
@@ -30,8 +36,15 @@ void menu(RenderWindow &window)
 	 text4.setPosition(710,470);
      sf::Music music;
      music.openFromFile("sounds/joker.ogg");
-     music.play();
-
+     SoundBuffer buf1, buf2;
+	 buf1.loadFromFile("sounds/step.ogg");
+	 buf2.loadFromFile("sounds/step2.ogg");
+	 Sound step1, step2;
+	 step1.setBuffer(buf1);
+     step2.setBuffer(buf2);
+     int musiccheck = 0;
+     int number = 50;
+     int number1 = 100;
 	 while(window.isOpen())
 	 {
 		text1.setColor(Color(0,0,0));
@@ -39,7 +52,12 @@ void menu(RenderWindow &window)
 		text3.setColor(Color(0,0,0));
 		text4.setColor(Color(0,0,0));
 		menuNum = 0;
-
+		if (musiccheck == 0)
+            {
+                musiccheck = 1;
+                music.setVolume(number);
+                music.play();
+            }
 		 window.clear(Color(129,181,221));
 		 if(IntRect(650,260,250,50).contains(Mouse::getPosition(window)))
 		 {
@@ -67,17 +85,29 @@ void menu(RenderWindow &window)
 		{
 			if (menuNum == 1)
             {
-                choice (window) ;
+                step(step1);
+                music.stop();
+                choice (window, number);
+                musiccheck = 0;
             }
-			/*if(menuNum == 2)
-			{
-				window.draw(menuLoad);
-				window.display();
-				while(!Keyboard::isKeyPressed(Keyboard::Escape))
-				{;}
-			}*/
+            if (menuNum == 2)
+            {
+                step(step1);
+                choice (window, number) ;
+                musiccheck = 0;
+            }
+            if (menuNum == 3)
+            {
+                step(step1);
+                musiccheck = 0;
+                music.stop();
+                number = settings (window, number1);
+                musiccheck = 0;
+            }
 			if(menuNum == 4)
 			{
+			    step(step1);
+			    music.stop();
 				window.close();
 			}
 		}
@@ -87,7 +117,6 @@ void menu(RenderWindow &window)
 		 window.draw(text3);
          window.draw(text4);
 		 window.display();
-		 puts ("menuu");
 	 }
 	 puts ("end of menu");
  }

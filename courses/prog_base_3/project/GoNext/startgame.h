@@ -3,6 +3,6 @@
 
 #include "object.h"
 
-object_t * startgame (RenderWindow &window, object_t * object);
+object_t * startgame (RenderWindow &window, object_t * object, int volume);
 
 #endif // STARTGAME_H_INCLUDED

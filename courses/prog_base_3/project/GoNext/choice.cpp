@@ -8,7 +8,7 @@
 #include "startgame.h"
  #include "object.h"
 
-void choice (RenderWindow &window)
+void choice (RenderWindow &window, int volume)
 {
      Texture choiceBackground;
 	 choiceBackground.loadFromFile("images/choiceBG.png");
@@ -57,6 +57,15 @@ void choice (RenderWindow &window)
 	 int exit = 0;
 	 object_t * object = object_t_new ("book", false);
 	 object_t * object1 = object_t_new ("book", false);
+	 SoundBuffer buf1, buf2;
+	 buf1.loadFromFile("sounds/step.ogg");
+	 buf2.loadFromFile("sounds/step2.ogg");
+	 Sound step1, step2;
+	 step1.setBuffer(buf1);
+     step2.setBuffer(buf2);
+     sf::Music music;
+     music.openFromFile("sounds/time.ogg");
+     int musiccheck = 0;
 	 while(window.isOpen())
 	 {
 		text1.setColor(Color(0,0,0));
@@ -71,7 +80,12 @@ void choice (RenderWindow &window)
 		text10.setColor(Color(0,0,0));
 		text11.setColor(Color(0,0,0));
 		menuNum = 0;
-
+        if (musiccheck == 0)
+            {
+                musiccheck = 1;
+                music.setVolume(volume);
+                music.play();
+            }
 		 window.clear(Color(129,181,221));
 		 if(IntRect(680,130,150,50).contains(Mouse::getPosition(window)))
 		 {
@@ -92,17 +106,23 @@ void choice (RenderWindow &window)
 		{
 			if (menuNum == 1)
             {
+                step1.play();
                 puts ("choice num 1");
             }
 			if(menuNum == 2)
 			{
+				step1.play();
+				music.stop();
 				puts ("choice num 2");
 				object_t_write_plan (object, 0);
-				object_t * object1 = startgame(window, object);
+				object_t * object1 = startgame(window, object, volume);
 				object_t_copy (object, object1);
+				musiccheck = 0;
 			}
 			if(menuNum == 3)
 			{
+			    step1.play();
+			    music.stop();
 			    puts ("choice num 3");
 				exit = 1;
 			}
@@ -122,7 +142,6 @@ void choice (RenderWindow &window)
 		 window.draw(text10);
 		 window.draw(text11);
 		 window.display();
-		 puts ("choice not made");
 	 }
 	 puts ("end of choice");
 }

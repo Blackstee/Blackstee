@@ -8,7 +8,9 @@
  #include "pause.h"
 #include "object.h"
 
-object_t * dragon(RenderWindow &window, object_t * object)
+
+
+object_t * dragon(RenderWindow &window, object_t * object, int volume)
 {
    Texture mapBackground;
     mapBackground.loadFromFile ("images/drag.png");
@@ -61,11 +63,26 @@ object_t * dragon(RenderWindow &window, object_t * object)
 	int keycheck = 0;
 	int suree  = 0;
 	int paus = 0;
+	SoundBuffer buf1, buf2;
+	 buf1.loadFromFile("sounds/step.ogg");
+	 buf2.loadFromFile("sounds/step2.ogg");
+	 Sound step1, step2;
+	 step1.setBuffer(buf1);
+     step2.setBuffer(buf2);
+     sf::Music music;
+     music.openFromFile("sounds/level.ogg");
+     int musiccheck = 0;
 while (window.isOpen())
 	{
         pro.setColor(Color(221,235,214));
         key.setColor(Color(221,235,214));
         lef.setColor(Color(221,235,214));
+        if (musiccheck == 0)
+            {
+                musiccheck = 1;
+                music.setVolume(volume);
+                music.play();
+            }
         text = 0;
         choice = 0;
         keycheck = 0;
@@ -102,17 +119,26 @@ while (window.isOpen())
        if(Mouse::isButtonPressed(Mouse::Left))
         {
             if (choice == 1)
+            {
+                step1.play();
                 object_t_change(object);
+            }
             if (choice == 2)
-               object_t_write_plan (object, 1);
+            {
+                step1.play();
+                object_t_write_plan (object, 1);
+            }
             if (choice == 3)
                 {
+                   step1.play();
+                   music.stop();
                    suree = 1;
                 }
         }
         if (suree == 1)
         {
-           paus = pause(window);
+           paus = pause(window, volume);
+           musiccheck = 0;
         }
         if (paus == 2 || paus == 3)
         {

@@ -9,7 +9,7 @@
  #include "pause.h"
  #include "object.h"
 
-object_t * startgame (RenderWindow &window, object_t * object)
+object_t * startgame (RenderWindow &window, object_t * object, int volume)
 {
     Texture mapBackground;
     mapBackground.loadFromFile ("images/door.png");
@@ -61,11 +61,26 @@ object_t * startgame (RenderWindow &window, object_t * object)
 	int exit = 0;
     int suree  = 0;
 	int paus = 0;
+	SoundBuffer buf1, buf2;
+	 buf1.loadFromFile("sounds/step.ogg");
+	 buf2.loadFromFile("sounds/step2.ogg");
+	 Sound step1, step2;
+	 step1.setBuffer(buf1);
+     step2.setBuffer(buf2);
+     sf::Music music;
+     music.openFromFile("sounds/startgame.ogg");
+     int musiccheck = 0;
 while (window.isOpen())
 	{
         pro.setColor(Color(221,235,214));
         re.setColor(Color(221,235,214));
         text2.setColor(Color(0,0,0));
+        if (musiccheck == 0)
+            {
+                musiccheck = 1;
+                music.setVolume(volume);
+                music.play();
+            }
         text = 0;
         choice = 0;
         float time = clock.getElapsedTime().asMicroseconds();
@@ -102,22 +117,31 @@ while (window.isOpen())
         {
             if (choice == 1)
             {
-                object_t * object1 = askman(window, object);
+                step1.play();
+                music.stop();
+                object_t * object1 = askman(window, object, volume);
                 object_t_copy (object, object1);
+                musiccheck = 0;
             }
             if (choice == 2)
             {
-                object_t * object1 = dragon(window, object);
+                step1.play();
+                music.stop();
+                object_t * object1 = dragon(window, object, volume);
                 object_t_copy (object, object1);
+                musiccheck = 0;
             }
             if (choice == 3)
                 {
+                   step1.play();
+                   music.stop();
                    suree = 1;
                 }
         }
         if (suree == 1)
         {
-           paus = pause(window);
+           paus = pause(window, volume);
+           musiccheck = 0;
         }
         if (paus == 2 || paus == 3)
         {
